@@ -2,7 +2,7 @@
 
 Swim-map Frontend (Web).
 
-- [ ] Router
-- [ ] Architecture
-- [ ] Styles
+- [x] Router
+- [x] Architecture
+- [x] Styles
 - [ ] DB TEST
