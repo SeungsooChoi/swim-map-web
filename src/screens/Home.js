@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Map from '../components/Map';
 import Nav from '../components/Nav';
@@ -16,6 +17,14 @@ const MapDivider = styled.div`
 `;
 
 const Home = () => {
+  const map = useSelector(state => state.swim.map);
+
+  useEffect(() => {
+    if (map != null) {
+      console.log('geolocation적용');
+    }
+  }, [map]);
+
   return (
     <>
       <Nav />

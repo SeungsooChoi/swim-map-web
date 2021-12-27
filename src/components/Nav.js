@@ -42,7 +42,11 @@ const Nav = () => {
     <NavContainer id="nav">
       <Logo>Swim</Logo>
       <SearchBar>
-        <FontAwesomeIcon icon={faSearch} size="1x" />
+        <FontAwesomeIcon
+          icon={faSearch}
+          size="1x"
+          color={mainColor.fontColor}
+        />
         <input type="text" placeholder="검색" />
       </SearchBar>
       {/* profile */}

@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { actionCreators } from '../../modules/mapReducer';
 
 const Map = styled.div`
   width: 100%;
@@ -7,6 +9,7 @@ const Map = styled.div`
 `;
 
 const NaverMap = () => {
+  const dispatch = useDispatch();
   const { naver } = window;
 
   const options = {
@@ -23,12 +26,15 @@ const NaverMap = () => {
     },
     minZoom: 6,
     zoom: 10,
-    // size: new naver.maps.Size(900, 900),
   };
 
   useEffect(() => {
+    console.log('NaverMap useEffect');
+
     const container = document.getElementById('map');
     const map = new naver.maps.Map(container, options);
+
+    dispatch(actionCreators.setMap(map), [map]);
   }, []);
 
   return <Map id="map" className="map" />;
