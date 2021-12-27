@@ -6,7 +6,7 @@ import { mainColor } from '../styles';
 
 const NavContainer = styled.div`
   width: 100%;
-  height: 60px;
+  height: 3.75rem; // 60px
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -33,13 +33,13 @@ const SearchBar = styled.div`
   input {
     font-size: 1rem;
     all: unset;
-    margin-left: 8px;
+    margin-left: 1rem;
   }
 `;
 
 const Nav = () => {
   return (
-    <NavContainer>
+    <NavContainer id="nav">
       <Logo>Swim</Logo>
       <SearchBar>
         <FontAwesomeIcon icon={faSearch} size="1x" />
