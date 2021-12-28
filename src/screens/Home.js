@@ -1,3 +1,4 @@
+import { gql, useQuery } from '@apollo/client';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -17,10 +18,22 @@ const MapDivider = styled.div`
   height: ${height - elementSize.navHeight}px;
 `;
 
+const SELECT_QUERY = gql`
+  query selectAll {
+    swimPools {
+      id
+      name
+      latitude
+      longitude
+    }
+  }
+`;
+
 const Home = () => {
   // store에서 map값을 가져와서 처음에 naverMap 객체가 생성되었는지 확인
   const map = useSelector(state => state.swim.map);
   const { location, error } = useGeolocation();
+  const { data } = useQuery(SELECT_QUERY);
   const { naver } = window;
 
   useEffect(() => {
@@ -39,7 +52,12 @@ const Home = () => {
 
   useEffect(() => {
     // DB에서 수영장 정보 가져와서 store에 저장
-  }, []);
+    if (data !== undefined) {
+      let pools = [...data.swimPools];
+      const sortedPools = pools.sort((a, b) => a.id - b.id);
+      console.log(sortedPools);
+    }
+  }, [data]);
 
   return (
     <>
