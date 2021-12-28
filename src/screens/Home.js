@@ -9,8 +9,6 @@ import { elementSize } from '../styles';
 
 const height = window.innerHeight;
 
-const { naver } = window;
-
 const MapDivider = styled.div`
   display: flex;
   flex-direction: row;
@@ -23,6 +21,7 @@ const Home = () => {
   // store에서 map값을 가져와서 처음에 naverMap 객체가 생성되었는지 확인
   const map = useSelector(state => state.swim.map);
   const { location, error } = useGeolocation();
+  const { naver } = window;
 
   useEffect(() => {
     if (map !== null) {
