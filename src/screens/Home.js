@@ -1,11 +1,12 @@
 import { gql, useQuery } from '@apollo/client';
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Map from '../components/Map';
 import Nav from '../components/Nav';
 import SwimList from '../components/SwimList';
 import useGeolocation from '../lib/useGeolocation';
+import { setSwimPool } from '../modules/swimPool';
 import { elementSize } from '../styles';
 
 const height = window.innerHeight;
@@ -30,34 +31,32 @@ const SELECT_QUERY = gql`
 `;
 
 const Home = () => {
-  // store에서 map값을 가져와서 처음에 naverMap 객체가 생성되었는지 확인
-  const map = useSelector(state => state.swim.map);
+  // 1. get swimpool from DB  >  save store
+  // 2. set naverMap
+  // 3. get currentLocation and man.panTo
+  const map = useSelector(state => state.map.map);
+  const dispatch = useDispatch();
+
   const { location, error } = useGeolocation();
   const { data } = useQuery(SELECT_QUERY);
   const { naver } = window;
 
   useEffect(() => {
-    if (map !== null) {
-      // 마커 표시
-      console.log('마커표시');
+    // DB에서 수영장 정보 가져와서 store에 저장
+    if (map !== null && data !== undefined) {
+      let pools = [...data.swimPools];
+      const sortedPools = pools.sort((a, b) => a.id - b.id);
+      dispatch(setSwimPool(sortedPools), [sortedPools]);
     }
-  }, [map]);
+  }, [data]);
 
   useEffect(() => {
     if (location !== null) {
-      // 내 위치에 마커 표시
+      console.log('지도이동');
+      // 현재 위치로 지도 이동
       map.panTo(new naver.maps.LatLng(location.latitude, location.longitude));
     }
   }, [location]);
-
-  useEffect(() => {
-    // DB에서 수영장 정보 가져와서 store에 저장
-    if (data !== undefined) {
-      let pools = [...data.swimPools];
-      const sortedPools = pools.sort((a, b) => a.id - b.id);
-      console.log(sortedPools);
-    }
-  }, [data]);
 
   return (
     <>

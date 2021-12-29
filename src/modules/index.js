@@ -1,5 +1,10 @@
-import mapReducer from './mapReducer';
+import { combineReducers } from 'redux';
+import map from './map';
+import swimPool from './swimPool';
 
-const rootReducer = mapReducer;
+const rootReducer = combineReducers({
+  map,
+  swimPool,
+});
 
 export default rootReducer;

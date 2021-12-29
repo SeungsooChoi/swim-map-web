@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { actionCreators } from '../../modules/mapReducer';
+import { setMap } from '../../modules/map';
 
 const Map = styled.div`
   width: 100%;
@@ -34,7 +34,7 @@ const NaverMap = () => {
     const container = document.getElementById('map');
     const map = new naver.maps.Map(container, options);
 
-    dispatch(actionCreators.setMap(map), [map]);
+    dispatch(setMap(map), [map]);
   }, []);
 
   return <Map id="map" className="map" />;
