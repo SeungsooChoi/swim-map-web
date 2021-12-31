@@ -43,6 +43,14 @@ const SwimListItem = ({ swimpool }) => {
               <h1>
                 {pool.name} ({pool.inOutDoorDivName})
               </h1>
+              {pool.roadNmAddr ? (
+                <span>{pool.roadNmAddr}</span>
+              ) : pool.lotNoAddr ? (
+                <span>{pool.lotNoAddr}</span>
+              ) : (
+                <span>등록된 주소 정보가 없습니다.</span>
+              )}
+
               <LaneInfo>
                 {pool.regPoolLaneCnt > 0 && (
                   <span>

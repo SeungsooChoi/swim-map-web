@@ -33,6 +33,8 @@ const SELECT_QUERY = gql`
       personCnt
       latitude
       longitude
+      lotNoAddr
+      roadNmAddr
       remarks
       updatedAt
     }
