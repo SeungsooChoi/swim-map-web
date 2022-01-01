@@ -18,4 +18,29 @@ export const GlobalStyles = createGlobalStyle`
     width: 100%;
     height: 100vh;
   }
+  .iw_inner {
+    width: 400px;
+    height: 200px;
+    background: white;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .iw_inner::after {
+    content: "";
+    position: absolute;
+    bottom: -18px;
+    left: 48%;
+    border-top: 20px solid white;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+  }
+
+  .iw_inner h1 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+
 `;

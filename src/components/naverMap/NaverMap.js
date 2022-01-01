@@ -43,7 +43,7 @@ const SELECT_QUERY = gql`
 const { naver } = window;
 
 const NaverMap = () => {
-  const { data } = useQuery(SELECT_QUERY);
+  const { data, loading, error } = useQuery(SELECT_QUERY);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -56,6 +56,10 @@ const NaverMap = () => {
 
     if (data !== undefined) {
       dispatchSwimPool();
+    } else {
+      if (loading) {
+        // DB연결 확인해야하는 부분인데 어떻게 처리할지 생각..
+      }
     }
   }, [data]);
 
