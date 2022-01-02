@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { formatDate } from '../lib/util';
 import { mainColor } from '../styles';
 
 const SwimListItemBlock = styled.div`
@@ -22,16 +23,6 @@ const LaneInfo = styled.div`
 `;
 
 const SwimListItem = ({ swimpool }) => {
-  const formatDate = date => {
-    const d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-    return [year, month, day].join('-');
-  };
-
   return (
     <div>
       {swimpool.length > 0
