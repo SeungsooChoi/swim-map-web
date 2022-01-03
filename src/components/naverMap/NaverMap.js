@@ -77,7 +77,7 @@ const NaverMap = () => {
         position: naver.maps.Position.TOP_RIGHT,
       },
       minZoom: 6,
-      zoom: 10,
+      zoom: 13,
     };
     const container = document.getElementById('map');
     const map = new naver.maps.Map(container, options);

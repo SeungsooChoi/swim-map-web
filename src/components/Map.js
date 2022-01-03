@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { updateMarkers } from '../lib/mapApi';
 import useGeolocation from '../lib/useGeolocation';
 import { formatDate } from '../lib/util';
+import { setInfoWindow, setMarker } from '../modules/map';
 import NaverMap from './naverMap/NaverMap';
 
 const Container = styled.div`
@@ -19,7 +20,7 @@ const Map = () => {
     map: state.map.map,
     swimpool: state.swimPool.swimPool,
   }));
-
+  const dispatch = useDispatch();
   const { location } = useGeolocation();
   const { naver } = window;
 
@@ -87,10 +88,23 @@ const Map = () => {
         infoWindows.push(infoWindow);
       });
 
+      // store에 마커, 인포윈도우 등록
+      dispatch(setMarker(markers));
+      dispatch(setInfoWindow(infoWindows));
+
+      // 맵 클릭 시 정보 창 다 닫히게 설정
+      naver.maps.Event.addListener(map, 'click', () => {
+        infoWindows.forEach(item => {
+          item.close();
+        });
+      });
+
+      // 맵에 마커 설정
       naver.maps.Event.addListener(map, 'idle', () =>
         updateMarkers(map, markers),
       );
 
+      // 마커 클릭 시 이벤트 설정
       for (let i = 0; i < markers.length; i++) {
         naver.maps.Event.addListener(markers[i], 'click', function () {
           handleClickMarkers(i);

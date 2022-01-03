@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import { formatDate } from '../lib/util';
 import { mainColor } from '../styles';
 
@@ -23,11 +24,25 @@ const LaneInfo = styled.div`
 `;
 
 const SwimListItem = ({ swimpool }) => {
+  const { map, marker, infoWindow } = useSelector(state => ({
+    map: state.map.map,
+    marker: state.map.marker,
+    infoWindow: state.map.infoWindow,
+  }));
+  const onClick = e => {
+    const currentId = e.target.parentNode.id;
+    const currentMarker = marker[currentId];
+
+    // ### infowindow가 없는 지역이 있는것 같음. 확인필요
+    console.log('해당 item id : ' + e.target.parentNode.id);
+    console.log(infoWindow[currentId]);
+    infoWindow[currentId].open(map, currentMarker);
+  };
   return (
     <div>
       {swimpool.length > 0
-        ? swimpool.map(pool => (
-            <SwimListItemBlock key={pool.id}>
+        ? swimpool.map((pool, index) => (
+            <SwimListItemBlock key={index} id={index}>
               <Header>
                 <span>{pool.sigunguName}</span>
               </Header>
@@ -56,6 +71,7 @@ const SwimListItem = ({ swimpool }) => {
                 )}
               </LaneInfo>
               <div>업데이트 날짜 :{formatDate(Number(pool.updatedAt))}</div>
+              <button onClick={onClick}>지도에서 보기</button>
             </SwimListItemBlock>
           ))
         : '데이터를 불러오는 중 입니다.'}
