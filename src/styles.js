@@ -32,10 +32,10 @@ export const GlobalStyles = createGlobalStyle`
     content: "";
     position: absolute;
     bottom: -18px;
-    left: 48%;
+    left: 50%;
     border-top: 20px solid white;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+    /* border-left: 0px solid transparent; */
+    border-right: 20px solid transparent;
   }
 
   .iw_inner h1 {

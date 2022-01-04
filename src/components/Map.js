@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { updateMarkers } from '../lib/mapApi';
+import { moveToMapCoords, updateMarkers } from '../lib/mapApi';
 import useGeolocation from '../lib/useGeolocation';
 import { formatDate } from '../lib/util';
 import { setInfoWindow, setMarker } from '../modules/map';
@@ -120,7 +120,7 @@ const Map = () => {
   useEffect(() => {
     if (location !== null) {
       // 현재 위치로 지도 이동
-      map.panTo(new naver.maps.LatLng(location.latitude, location.longitude));
+      moveToMapCoords(map, location.latitude, location.longitude);
     }
   }, [location, map]);
 

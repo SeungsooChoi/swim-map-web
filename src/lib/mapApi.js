@@ -1,3 +1,8 @@
+export const moveToMapCoords = (mapObj, lat, lng) => {
+  const { naver } = window;
+  mapObj.panTo(new naver.maps.LatLng(lat, lng));
+};
+
 export const updateMarkers = (mapObj, markers) => {
   let mapBounds = mapObj.getBounds();
   let marker, position;
