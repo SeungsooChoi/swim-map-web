@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { mainColor } from '../styles';
+import Login from './user/Login';
+import Profile from './user/Profile';
 
 const NavContainer = styled.div`
   width: 100%;
@@ -38,6 +40,7 @@ const SearchBar = styled.div`
 `;
 
 const Nav = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <NavContainer id="nav">
       <Logo>Swim</Logo>
@@ -49,7 +52,7 @@ const Nav = () => {
         />
         <input type="text" placeholder="검색" />
       </SearchBar>
-      {/* profile */}
+      {isLoggedIn ? <Profile /> : <Login />}
     </NavContainer>
   );
 };
