@@ -5,6 +5,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { mainColor } from '../styles';
 import Login from './user/Login';
 import Profile from './user/Profile';
+import Button from './Button';
 
 const NavContainer = styled.div`
   width: 100%;
@@ -52,7 +53,7 @@ const Nav = () => {
         />
         <input type="text" placeholder="검색" />
       </SearchBar>
-      {isLoggedIn ? <Profile /> : <Login />}
+      {isLoggedIn ? <Profile /> : <Button to="/login">로그인</Button>}
     </NavContainer>
   );
 };
