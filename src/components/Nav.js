@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { mainColor } from '../styles';
-import Login from './user/Login';
 import Profile from './user/Profile';
-import Button from './Button';
 
 const NavContainer = styled.div`
   width: 100%;
@@ -15,6 +13,24 @@ const NavContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid ${mainColor.lineColor};
+
+  button {
+    all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    border: 1px solid #dddddd;
+    color: #80c7fa;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    :hover {
+      color: #1f8cff;
+    }
+  }
 `;
 
 const Logo = styled.h1`
@@ -40,8 +56,9 @@ const SearchBar = styled.div`
   }
 `;
 
-const Nav = () => {
+const Nav = ({ onClick }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <NavContainer id="nav">
       <Logo>Swim</Logo>
@@ -53,7 +70,7 @@ const Nav = () => {
         />
         <input type="text" placeholder="검색" />
       </SearchBar>
-      {isLoggedIn ? <Profile /> : <Button to="/login">로그인</Button>}
+      {isLoggedIn ? <Profile /> : <button onClick={onClick}>로그인</button>}
     </NavContainer>
   );
 };
