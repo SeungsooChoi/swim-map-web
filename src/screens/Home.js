@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Map from '../components/Map';
 import Nav from '../components/Nav';
@@ -26,6 +26,11 @@ const Home = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  // cleanup
+  useEffect(() => {
+    return () => setIsModalOpen(false);
+  }, []);
 
   return (
     <>
