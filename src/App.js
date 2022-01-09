@@ -4,8 +4,7 @@ import Home from './screens/Home';
 import NotFound from './screens/NotFound';
 import { GlobalStyles } from './styles';
 import { client } from './apollo';
-import Login from './components/user/Login';
-import Signup from './components/user/Signup';
+import Signup from './screens/Signup';
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/login" exact element={<Login />} />
           <Route path="/sign-up" exact element={<Signup />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>

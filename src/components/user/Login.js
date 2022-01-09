@@ -1,9 +1,13 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { mainColor } from '../../styles';
+import AuthLayout from './AuthLayout';
+import BottomBox from './BottomBox';
+import Button from './Button';
+import Input from './Input';
+import Separator from './Separator';
 
 const ModalWrapper = styled.div`
   position: fixed;
@@ -35,77 +39,10 @@ const LoginModal = styled.div`
   }
 `;
 
-const ModalContents = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 1rem 5rem 2rem 5rem;
-  form {
-    margin-top: 2rem;
-    width: 100%;
-    display: flex;
-    justify-items: center;
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
 const Logo = styled.h1`
   font-size: 3rem;
   font-weight: bold;
   color: ${mainColor.fontColor};
-`;
-
-const Input = styled.input`
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  width: 100%;
-  background-color: #fafafa;
-  border: 0.5px solid rgb(219, 219, 219);
-  border-radius: 0.25rem;
-  box-sizing: border-box;
-  font-size: 1.25rem;
-  &::placeholder {
-    font-size: 1.25rem;
-  }
-`;
-
-const Button = styled.button`
-  margin-top: 0.5rem;
-  padding: 0.5rem 0;
-  width: 100%;
-  font-size: 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  background-color: #0095f6;
-  color: white;
-  text-align: center;
-  font-weight: 600;
-  cursor: pointer;
-`;
-
-const Separator = styled.div`
-  margin: 20px 0px 30px 0px;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  align-items: center;
-  div {
-    width: 100%;
-    height: 1px;
-    background-color: rgb(219, 219, 219);
-  }
-  span {
-    margin: 0px 10px;
-    font-weight: 600;
-    color: #8e8e8e;
-  }
-`;
-
-const SignInContent = styled.div`
-  text-align: center;
 `;
 
 const Login = ({ isOpen, close }) => {
@@ -136,7 +73,7 @@ const Login = ({ isOpen, close }) => {
               </button>
             </div>
 
-            <ModalContents>
+            <AuthLayout>
               <Logo>swim</Logo>
               <form>
                 <Input type="text" name="username" placeholder="username" />
@@ -144,16 +81,13 @@ const Login = ({ isOpen, close }) => {
                 <Button>로그인</Button>
               </form>
 
-              <Separator>
-                <div></div>
-                <span>Or</span>
-                <div></div>
-              </Separator>
-            </ModalContents>
-            <SignInContent>
-              <span>가입된 계정이 없으신가요?</span>{' '}
-              <Link to="/sign-up">회원가입</Link>
-            </SignInContent>
+              <Separator />
+            </AuthLayout>
+            <BottomBox
+              cta="가입된 계정이 없으신가요?"
+              link="/sign-up"
+              linkText="회원가입"
+            />
           </LoginModal>
         </ModalWrapper>
       ) : null}
