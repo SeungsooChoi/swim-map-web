@@ -1,4 +1,5 @@
 import React from 'react';
+import { useReactiveVar } from '@apollo/client';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -48,7 +49,7 @@ const SearchBar = styled.div`
   flex-direction: row;
   align-items: center;
   border-radius: 20px;
-  padding-left: 20px;
+  padding: 0px 20px;
   box-sizing: border-box;
   input {
     font-size: 1rem;
@@ -58,6 +59,7 @@ const SearchBar = styled.div`
 `;
 
 const Nav = ({ onClick }) => {
+  const isLoggedIn = useReactiveVar(isLoggedUser);
   return (
     <NavContainer id="nav">
       <Logo>Swim</Logo>
@@ -69,7 +71,7 @@ const Nav = ({ onClick }) => {
         />
         <input type="text" placeholder="검색" />
       </SearchBar>
-      {isLoggedUser() ? <Profile /> : <button onClick={onClick}>로그인</button>}
+      {isLoggedIn ? <Profile /> : <button onClick={onClick}>로그인</button>}
     </NavContainer>
   );
 };
