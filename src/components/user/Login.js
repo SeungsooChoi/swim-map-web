@@ -1,7 +1,10 @@
+import { gql, useMutation } from '@apollo/client';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import { userLogIn } from '../../apollo';
+import useInputs from '../../hooks/useInputs';
 import { mainColor } from '../../styles';
 import AuthLayout from './AuthLayout';
 import BottomBox from './BottomBox';
@@ -45,14 +48,59 @@ const Logo = styled.h1`
   color: ${mainColor.fontColor};
 `;
 
+const LOGIN_MUTATION = gql`
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+      ok
+      token
+      error
+    }
+  }
+`;
+
 const Login = ({ isOpen, close }) => {
+  const [{ username, password }, onChange, reset] = useInputs({
+    username: '',
+    password: '',
+  });
+  const [errors, setErrors] = useState('');
   const modalEl = useRef();
+
+  const onCompleted = data => {
+    const {
+      login: { ok, error, token },
+    } = data;
+    console.log(ok, error, token);
+
+    if (!ok) {
+      setErrors(error);
+    }
+    if (token) {
+      userLogIn(token);
+      reset();
+      close();
+    }
+  };
+  const [login, { loading }] = useMutation(LOGIN_MUTATION, {
+    onCompleted,
+  });
 
   const handleClickOutside = e => {
     // 모달이 열려있을 때 X 버튼을 누르거나 외부 투명한 영역을 눌렀을 때 close
     if (isOpen && (!modalEl.current || !modalEl.current.contains(e.target))) {
       close();
     }
+  };
+
+  const onSubmit = e => {
+    e.preventDefault();
+
+    if (loading) {
+      return;
+    }
+    login({
+      variables: { username, password },
+    });
   };
 
   useEffect(() => {
@@ -75,10 +123,35 @@ const Login = ({ isOpen, close }) => {
 
             <AuthLayout>
               <Logo>swim</Logo>
-              <form>
-                <Input type="text" name="username" placeholder="username" />
-                <Input type="password" name="password" placeholder="password" />
-                <Button>로그인</Button>
+              <form onSubmit={onSubmit}>
+                <Input
+                  type="text"
+                  name="username"
+                  placeholder="username"
+                  onChange={onChange}
+                  value={username}
+                  required
+                />
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                  onChange={onChange}
+                  value={password}
+                  required
+                />
+                <Button
+                  type="submit"
+                  disabled={
+                    username === '' ||
+                    username.length > 12 ||
+                    username.length < 2 ||
+                    password.length < 4
+                  }
+                >
+                  로그인
+                </Button>
+                {errors}
               </form>
 
               <Separator />

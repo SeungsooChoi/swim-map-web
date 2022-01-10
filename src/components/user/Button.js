@@ -13,6 +13,7 @@ const SButton = styled.button`
   text-align: center;
   font-weight: 600;
   cursor: pointer;
+  opacity: ${props => (props.disabled ? '0.2' : '1')};
 `;
 
 const Button = props => {
