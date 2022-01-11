@@ -49,8 +49,8 @@ const Logo = styled.h1`
 `;
 
 const LOGIN_MUTATION = gql`
-  mutation login($username: String!, $password: String!) {
-    login(username: $username, password: $password) {
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
       ok
       token
       error
@@ -59,8 +59,8 @@ const LOGIN_MUTATION = gql`
 `;
 
 const Login = ({ isOpen, close }) => {
-  const [{ username, password }, onChange, reset] = useInputs({
-    username: '',
+  const [{ email, password }, onChange, reset] = useInputs({
+    email: '',
     password: '',
   });
   const [errors, setErrors] = useState('');
@@ -70,6 +70,7 @@ const Login = ({ isOpen, close }) => {
     const {
       login: { ok, error, token },
     } = data;
+    console.log(ok, error, token);
 
     if (!ok) {
       setErrors(error);
@@ -87,6 +88,7 @@ const Login = ({ isOpen, close }) => {
   const handleClickOutside = e => {
     // 모달이 열려있을 때 X 버튼을 누르거나 외부 투명한 영역을 눌렀을 때 close
     if (isOpen && (!modalEl.current || !modalEl.current.contains(e.target))) {
+      reset();
       close();
     }
   };
@@ -98,7 +100,7 @@ const Login = ({ isOpen, close }) => {
       return;
     }
     login({
-      variables: { username, password },
+      variables: { email, password },
     });
   };
 
@@ -124,30 +126,22 @@ const Login = ({ isOpen, close }) => {
               <Logo>swim</Logo>
               <form onSubmit={onSubmit}>
                 <Input
-                  type="text"
-                  name="username"
-                  placeholder="username"
+                  type="email"
+                  name="email"
+                  placeholder="이메일"
                   onChange={onChange}
-                  value={username}
+                  value={email}
                   required
                 />
                 <Input
                   type="password"
                   name="password"
-                  placeholder="password"
+                  placeholder="비밀번호"
                   onChange={onChange}
                   value={password}
                   required
                 />
-                <Button
-                  type="submit"
-                  disabled={
-                    username === '' ||
-                    username.length > 12 ||
-                    username.length < 2 ||
-                    password.length < 4
-                  }
-                >
+                <Button type="submit" disabled={password.length < 4}>
                   로그인
                 </Button>
                 {errors}
