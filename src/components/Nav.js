@@ -6,6 +6,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { mainColor } from '../styles';
 import Profile from './user/Profile';
 import { isLoggedUser } from '../apollo';
+import { Link } from 'react-router-dom';
 
 const NavContainer = styled.div`
   width: 100%;
@@ -15,24 +16,6 @@ const NavContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid ${mainColor.lineColor};
-
-  button {
-    all: unset;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 40px;
-    border: 1px solid #dddddd;
-    color: #80c7fa;
-    border-radius: 25px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    :hover {
-      color: #1f8cff;
-    }
-  }
 `;
 
 const Logo = styled.h1`
@@ -58,7 +41,25 @@ const SearchBar = styled.div`
   }
 `;
 
-const Nav = ({ onClick }) => {
+const SLink = styled(Link)`
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+  border: 1px solid #dddddd;
+  color: #80c7fa;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  :hover {
+    color: #1f8cff;
+  }
+`;
+
+const Nav = () => {
   const isLoggedIn = useReactiveVar(isLoggedUser);
   return (
     <NavContainer id="nav">
@@ -71,7 +72,7 @@ const Nav = ({ onClick }) => {
         />
         <input type="text" placeholder="검색" />
       </SearchBar>
-      {isLoggedIn ? <Profile /> : <button onClick={onClick}>로그인</button>}
+      {isLoggedIn ? <Profile /> : <SLink to="/login">로그인</SLink>}
     </NavContainer>
   );
 };

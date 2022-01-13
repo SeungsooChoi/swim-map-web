@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { userLogOut } from '../../apollo';
-import Button from './Button';
+import useUser from '../../hooks/useUser';
 
 const Container = styled.div`
   display: flex;
@@ -10,16 +10,35 @@ const Container = styled.div`
   align-items: center;
   width: 13rem;
 `;
+const SButton = styled.button`
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+  border: 1px solid #dddddd;
+  color: #80c7fa;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  :hover {
+    color: #1f8cff;
+  }
+`;
 
 const Profile = () => {
-  const onClick = useCallback(() => {
+  const { data } = useUser();
+
+  const onClick = () => {
     userLogOut();
-  });
+  };
 
   return (
     <Container>
-      <span>프로필</span>
-      <Button onClick={onClick}>로그아웃</Button>
+      <span>{data?.seeProfile?.username} 님</span>
+      <SButton onClick={onClick}>로그아웃</SButton>
     </Container>
   );
 };

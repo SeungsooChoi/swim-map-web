@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Map from '../components/Map';
 import Nav from '../components/Nav';
 import SwimList from '../components/SwimList';
-import Login from '../components/user/Login';
 import { elementSize } from '../styles';
 
 const height = window.innerHeight;
@@ -17,25 +16,9 @@ const MapDivider = styled.div`
 `;
 
 const Home = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const onClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  // cleanup
-  useEffect(() => {
-    return () => setIsModalOpen(false);
-  }, []);
-
   return (
     <>
-      <Login isOpen={isModalOpen} close={closeModal} />
-      <Nav onClick={onClick} />
+      <Nav />
       <MapDivider>
         <SwimList />
         <Map />
