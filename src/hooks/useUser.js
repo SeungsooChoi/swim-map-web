@@ -2,7 +2,7 @@ import { gql, useQuery, useReactiveVar } from '@apollo/client';
 import { useEffect } from 'react';
 import { isLoggedUser, userLogOut } from '../apollo';
 
-export const GET_PROFILE = gql`
+const GET_PROFILE = gql`
   query seeProfile {
     seeProfile {
       id

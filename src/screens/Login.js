@@ -2,14 +2,14 @@ import { gql, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { userLogIn } from '../../apollo';
-import useInputs from '../../hooks/useInputs';
-import { mainColor } from '../../styles';
-import AuthLayout from './AuthLayout';
-import BottomBox from './BottomBox';
-import Button from './Button';
-import Input from './Input';
-import Separator from './Separator';
+import { userLogIn } from '../apollo';
+import useInputs from '../hooks/useInputs';
+import { mainColor } from '../styles';
+import AuthLayout from '../components/user/AuthLayout';
+import BottomBox from '../components/user/BottomBox';
+import Button from '../components/user/Button';
+import Input from '../components/user/Input';
+import Separator from '../components/user/Separator';
 
 const LoginModal = styled.div`
   background: white;
