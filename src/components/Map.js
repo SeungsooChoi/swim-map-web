@@ -22,9 +22,9 @@ const Map = () => {
   }));
   const dispatch = useDispatch();
   const { location } = useGeolocation();
-  const { naver } = window;
 
   useEffect(() => {
+    const { naver } = window;
     let markers = [];
     let infoWindows = [];
 
@@ -41,9 +41,6 @@ const Map = () => {
     const paintMarker = () => {
       // 1. marker : [], infoWindow : [] 필요함.
       const swimArr = [...swimpool];
-
-      console.log(map);
-      console.log(swimpool);
 
       swimArr.forEach(pool => {
         let newMarker = new naver.maps.Marker({
@@ -115,7 +112,7 @@ const Map = () => {
     if (swimpool.length > 0) {
       paintMarker();
     }
-  }, [swimpool, map]);
+  }, [swimpool, map, dispatch]);
 
   useEffect(() => {
     if (location !== null) {

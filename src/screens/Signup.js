@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { gql, useMutation } from '@apollo/client';
 import styled from 'styled-components';
@@ -53,7 +53,6 @@ const Signup = () => {
       username: '',
       password: '',
     });
-  const [errors, setErrors] = useState('');
   const navigate = useNavigate();
 
   const onCompleted = data => {

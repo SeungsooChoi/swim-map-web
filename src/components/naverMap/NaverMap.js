@@ -43,10 +43,13 @@ const SELECT_QUERY = gql`
 const { naver } = window;
 
 const NaverMap = () => {
-  const { data, loading, error } = useQuery(SELECT_QUERY);
+  const { data, loading } = useQuery(SELECT_QUERY);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (loading) {
+      return;
+    }
     // DB에서 수영장 정보 가져와서 store에 저장
     const dispatchSwimPool = () => {
       let pools = [...data.swimPools];
@@ -57,11 +60,9 @@ const NaverMap = () => {
     if (data !== undefined) {
       dispatchSwimPool();
     } else {
-      if (loading) {
-        // DB연결 확인해야하는 부분인데 어떻게 처리할지 생각..
-      }
+      // DB연결 확인해야하는 부분인데 어떻게 처리할지 생각..
     }
-  }, [data]);
+  }, [loading, data, dispatch]);
 
   useEffect(() => {
     const options = {
@@ -83,7 +84,7 @@ const NaverMap = () => {
     const map = new naver.maps.Map(container, options);
 
     dispatch(setMap(map), [map]);
-  }, []);
+  }, [dispatch]);
 
   return <Map id="map" className="map" />;
 };

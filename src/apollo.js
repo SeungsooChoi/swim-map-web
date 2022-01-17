@@ -34,6 +34,7 @@ export const userLogIn = token => {
 export const userLogOut = () => {
   localStorage.removeItem(TOKEN);
   isLoggedUser(false);
+  window.location.reload();
 };
 
 export const client = new ApolloClient({

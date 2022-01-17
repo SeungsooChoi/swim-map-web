@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useReactiveVar } from '@apollo/client';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +7,7 @@ import { mainColor } from '../styles';
 import Profile from './user/Profile';
 import { isLoggedUser } from '../apollo';
 import { Link } from 'react-router-dom';
+import ModalPopup from './modal/ModalPopup';
 
 const NavContainer = styled.div`
   width: 100%;
@@ -59,8 +60,41 @@ const SLink = styled(Link)`
   }
 `;
 
+const SButton = styled.button`
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+  border: 1px solid #80c7fa;
+  background: #80c7fa;
+  color: white;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  :hover {
+    color: #1f8cff;
+  }
+`;
+
 const Nav = () => {
   const isLoggedIn = useReactiveVar(isLoggedUser);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onClick = () => {
+    if (!isLoggedIn) {
+      setIsOpen(true);
+      return;
+    }
+    console.log('장소등록 화면 이동');
+  };
+
+  const onClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <NavContainer id="nav">
       <Logo>Swim</Logo>
@@ -72,7 +106,17 @@ const Nav = () => {
         />
         <input type="text" placeholder="검색" />
       </SearchBar>
-      {isLoggedIn ? <Profile /> : <SLink to="/login">로그인</SLink>}
+      <>
+        {isLoggedIn ? <Profile /> : <SLink to="/login">로그인</SLink>}
+        <SButton onClick={onClick}>장소 등록</SButton>
+        <ModalPopup
+          isOpen={isOpen}
+          close={onClose}
+          onRequestClose={onClose}
+          title="로그인이 필요한 서비스입니다."
+          content="로그인하시겠습니까?"
+        />
+      </>
     </NavContainer>
   );
 };

@@ -8,7 +8,6 @@ import Signup from './screens/Signup';
 import Login from './screens/Login';
 
 function App() {
-  console.log('app');
   return (
     <ApolloProvider client={client}>
       <GlobalStyles />
