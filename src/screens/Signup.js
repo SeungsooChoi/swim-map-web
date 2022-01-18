@@ -8,6 +8,7 @@ import Input from '../components/user/Input';
 import Separator from '../components/user/Separator';
 import { mainColor } from '../styles';
 import useInputs from '../hooks/useInputs';
+import BottomBox from '../components/user/BottomBox';
 
 const SWrapper = styled.div`
   margin-top: 10rem;
@@ -123,20 +124,11 @@ const Signup = () => {
             onChange={onChange}
             required
           />
-          <Button
-            type="submit"
-            // disabled={
-            //   username === '' ||
-            //   username.length > 12 ||
-            //   username.length < 2 ||
-            //   password.length < 4
-            // }
-          >
-            회원가입
-          </Button>
+          <Button type="submit">회원가입</Button>
         </form>
 
         <Separator />
+        <BottomBox cta="" link="/" linkText="처음 화면으로" />
       </AuthLayout>
     </SWrapper>
   );

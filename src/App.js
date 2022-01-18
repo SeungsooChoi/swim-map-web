@@ -6,6 +6,7 @@ import { GlobalStyles } from './styles';
 import { client } from './apollo';
 import Signup from './screens/Signup';
 import Login from './screens/Login';
+import routes from './routes';
 
 function App() {
   return (
@@ -13,9 +14,9 @@ function App() {
       <GlobalStyles />
       <Router>
         <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/sign-up" element={<Signup />} />
+          <Route path={routes.home} exact element={<Home />} />
+          <Route path={routes.login} element={<Login />} />
+          <Route path={routes.signUp} element={<Signup />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </Router>

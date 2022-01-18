@@ -8,6 +8,7 @@ import Profile from './user/Profile';
 import { isLoggedUser } from '../apollo';
 import { Link } from 'react-router-dom';
 import ModalPopup from './modal/ModalPopup';
+import routes from '../routes';
 
 const NavContainer = styled.div`
   width: 100%;
@@ -107,7 +108,7 @@ const Nav = () => {
         <input type="text" placeholder="검색" />
       </SearchBar>
       <>
-        {isLoggedIn ? <Profile /> : <SLink to="/login">로그인</SLink>}
+        {isLoggedIn ? <Profile /> : <SLink to={routes.login}>로그인</SLink>}
         <SButton onClick={onClick}>장소 등록</SButton>
         <ModalPopup
           isOpen={isOpen}

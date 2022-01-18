@@ -10,6 +10,7 @@ import BottomBox from '../components/user/BottomBox';
 import Button from '../components/user/Button';
 import Input from '../components/user/Input';
 import Separator from '../components/user/Separator';
+import routes from '../routes';
 
 const LoginModal = styled.div`
   background: white;
@@ -110,7 +111,7 @@ const Login = () => {
       </AuthLayout>
       <BottomBox
         cta="가입된 계정이 없으신가요?"
-        link="/sign-up"
+        link={routes.signUp}
         linkText="회원가입"
       />
       <BottomBox cta="" link="/" linkText="처음 화면으로" />
