@@ -6,7 +6,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { mainColor } from '../styles';
 import Profile from './user/Profile';
 import { isLoggedUser } from '../apollo';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ModalPopup from './modal/ModalPopup';
 import routes from '../routes';
 
@@ -83,6 +83,7 @@ const SButton = styled.button`
 const Nav = () => {
   const isLoggedIn = useReactiveVar(isLoggedUser);
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const onClick = () => {
     if (!isLoggedIn) {
@@ -94,6 +95,10 @@ const Nav = () => {
 
   const onClose = () => {
     setIsOpen(false);
+  };
+
+  const handleClickOk = () => {
+    navigate(routes.login);
   };
 
   return (
@@ -114,6 +119,7 @@ const Nav = () => {
           isOpen={isOpen}
           close={onClose}
           onRequestClose={onClose}
+          handleClickOk={handleClickOk}
           title="로그인이 필요한 서비스입니다."
           content="로그인하시겠습니까?"
         />

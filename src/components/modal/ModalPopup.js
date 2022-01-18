@@ -38,9 +38,14 @@ const SButton = styled.button`
 
 Modal.setAppElement('#root');
 
-const ModalPopup = props => {
-  const { isOpen, title, content, onRequestClose, close } = props;
-
+const ModalPopup = ({
+  isOpen,
+  title,
+  content,
+  onRequestClose,
+  close,
+  handleClickOk,
+}) => {
   const styles = {
     overlay: {
       position: 'fixed',
@@ -71,7 +76,7 @@ const ModalPopup = props => {
       <Sh1>{title}</Sh1>
       <Sp>{content}</Sp>
       <ButtonWrapper>
-        <SButton>예</SButton>
+        <SButton onClick={() => handleClickOk()}>예</SButton>
         <SButton onClick={() => close()}>아니오</SButton>
       </ButtonWrapper>
     </Modal>
