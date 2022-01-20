@@ -2,11 +2,11 @@ import React from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 
-const Sh1 = styled.h1`
+const Title = styled.h1`
   font-size: 1.8rem;
 `;
 
-const Sp = styled.p`
+const Content = styled.p`
   font-size: 1.5rem;
   margin-top: 2rem;
 `;
@@ -73,8 +73,8 @@ const ModalPopup = ({
       style={styles}
       onRequestClose={onRequestClose}
     >
-      <Sh1>{title}</Sh1>
-      <Sp>{content}</Sp>
+      <Title>{title}</Title>
+      <Content>{content}</Content>
       <ButtonWrapper>
         <SButton onClick={() => handleClickOk()}>예</SButton>
         <SButton onClick={() => close()}>아니오</SButton>

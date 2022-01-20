@@ -59,8 +59,6 @@ const NaverMap = () => {
 
     if (data !== undefined) {
       dispatchSwimPool();
-    } else {
-      // DB연결 확인해야하는 부분인데 어떻게 처리할지 생각..
     }
   }, [loading, data, dispatch]);
 

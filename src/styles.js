@@ -34,7 +34,6 @@ export const GlobalStyles = createGlobalStyle`
     bottom: -18px;
     left: 50%;
     border-top: 20px solid white;
-    /* border-left: 0px solid transparent; */
     border-right: 20px solid transparent;
   }
 
