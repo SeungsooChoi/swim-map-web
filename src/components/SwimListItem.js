@@ -37,7 +37,6 @@ const SwimListItem = ({ swimpool }) => {
     const lat = currentMarker.position._lat;
     const lng = currentMarker.position._lng;
 
-    // 초기 데이터 중 lat, lng이 null인경우 있음.
     moveToMapCoords(map, lat, lng);
     infoWindow[currentId].open(map, currentMarker);
   };
