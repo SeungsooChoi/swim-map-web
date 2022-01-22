@@ -1,28 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 import Map from '../components/Map';
-import Nav from '../components/Nav';
-import SwimList from '../components/SwimList';
+import NavigationBar from '../components/NavigationBar';
+import PoolList from '../components/PoolList';
 import { elementSize } from '../styles';
 
 const height = window.innerHeight;
 
-const MapDivider = styled.div`
+const Contents = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
   height: ${height - elementSize.navHeight}px;
 `;
 
 const Home = () => {
   return (
     <>
-      <Nav />
-      <MapDivider>
-        <SwimList />
+      <NavigationBar />
+      <Contents>
+        <PoolList />
         <Map />
-      </MapDivider>
+      </Contents>
     </>
   );
 };

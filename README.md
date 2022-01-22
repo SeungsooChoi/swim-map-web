@@ -33,7 +33,7 @@
 
 - App
   - Home
-    - SearchBar
+    - NavigationBar
     - PoolList
     - PoolListItem
     - MapView

@@ -63,7 +63,7 @@ const SButton = styled.button`
   }
 `;
 
-const Nav = () => {
+const NavigationBar = () => {
   const isLoggedIn = useReactiveVar(isLoggedUser);
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -136,4 +136,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default NavigationBar;

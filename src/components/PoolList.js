@@ -2,24 +2,24 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { mainColor } from '../styles';
-import SwimListItem from './SwimListItem';
+import PoolListItem from './PoolListItem';
 
 const ListWrapper = styled.div`
-  width: 25rem; // 400px
+  width: 25%;
   border-right: 1px solid ${mainColor.lineColor};
   overflow-y: scroll;
 `;
 
-const SwimList = () => {
+const PoolList = () => {
   const { swimpool } = useSelector(state => ({
     swimpool: state.swimPool.swimPool,
   }));
 
   return (
     <ListWrapper>
-      <SwimListItem swimpool={swimpool} />
+      <PoolListItem swimpool={swimpool} />
     </ListWrapper>
   );
 };
 
-export default SwimList;
+export default PoolList;

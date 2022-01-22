@@ -5,7 +5,7 @@ import { formatDate } from '../lib/util';
 import { mainColor } from '../styles';
 import { moveToMapCoords } from '../lib/mapApi';
 
-const SwimListItemBlock = styled.div`
+const PoolListItemBlock = styled.div`
   padding: 1rem;
   border-bottom: 1px solid ${mainColor.lineColor};
 `;
@@ -24,7 +24,7 @@ const LaneInfo = styled.div`
   }
 `;
 
-const SwimListItem = ({ swimpool }) => {
+const PoolListItem = ({ swimpool }) => {
   const { map, marker, infoWindow } = useSelector(state => ({
     map: state.map.map,
     marker: state.map.marker,
@@ -41,10 +41,10 @@ const SwimListItem = ({ swimpool }) => {
     infoWindow[currentId].open(map, currentMarker);
   };
   return (
-    <div>
+    <>
       {swimpool.length > 0
         ? swimpool.map((pool, index) => (
-            <SwimListItemBlock key={index} id={index}>
+            <PoolListItemBlock key={index} id={index}>
               <Header>
                 <span>{pool.sigunguName}</span>
               </Header>
@@ -74,11 +74,11 @@ const SwimListItem = ({ swimpool }) => {
               </LaneInfo>
               <div>업데이트 날짜 :{formatDate(Number(pool.updatedAt))}</div>
               <button onClick={onClick}>지도에서 보기</button>
-            </SwimListItemBlock>
+            </PoolListItemBlock>
           ))
         : '데이터를 불러오는 중 입니다.'}
-    </div>
+    </>
   );
 };
 
-export default SwimListItem;
+export default PoolListItem;
