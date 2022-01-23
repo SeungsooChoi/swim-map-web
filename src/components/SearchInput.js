@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { mainColor } from '../styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { getMatchedIndex } from '../lib/util';
+import { openInfoWindow } from '../lib/mapApi';
+import { useSelector } from 'react-redux';
 
 const Wrapper = styled.div`
   width: 25rem;
@@ -42,10 +45,24 @@ const AutoComplete = styled.ul`
   }
 `;
 
-const SearchInput = ({ results, searchValue, onChange }) => {
+const SearchInput = ({ results, searchValue, onChange, handleClickResult }) => {
+  const { map } = useSelector(state => ({ map: state.map.map }));
+  const { marker } = useSelector(state => ({ marker: state.map.marker }));
+  const { infoWindow } = useSelector(state => ({
+    infoWindow: state.map.infoWindow,
+  }));
+  const { swimpool } = useSelector(state => ({
+    swimpool: state.swimPool.swimPool,
+  }));
+
   const onClick = e => {
-    alert('TEST DB, Main DB 분리작업 이후 할것');
+    const currentId = e.target.id;
+    const currentText = e.target.innerHTML;
+    handleClickResult(currentText);
+    const id = getMatchedIndex(swimpool, currentId);
+    openInfoWindow(map, marker, id, infoWindow);
   };
+
   return (
     <Wrapper>
       <FontAwesomeIcon icon={faSearch} size="1x" color={mainColor.fontColor} />

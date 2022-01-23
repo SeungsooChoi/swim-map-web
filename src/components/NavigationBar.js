@@ -112,6 +112,15 @@ const NavigationBar = () => {
     onSearch(value);
   };
 
+  /**
+   * 드롭다운메뉴에서 장소를 선택하면 상태값을 선택한 값으로 변경하고 드롭다운 닫음
+   * @param {*} text 드롭다운에서 선택한 텍스트
+   */
+  const handleClickResult = text => {
+    setSearchValue(text);
+    setResults([]);
+  };
+
   return (
     <NavContainer id="nav">
       <Logo>Swim</Logo>
@@ -119,6 +128,7 @@ const NavigationBar = () => {
         results={results}
         searchValue={searchValue}
         onChange={onChange}
+        handleClickResult={handleClickResult}
       />
       <>
         {isLoggedIn ? <Profile /> : <SLink to={routes.login}>로그인</SLink>}
