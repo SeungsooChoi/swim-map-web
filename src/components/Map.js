@@ -13,11 +13,8 @@ const Container = styled.div`
 `;
 
 const Map = () => {
-  // 1. get swimpool from DB  >  save store
-  // 2. set naverMap
-  // 3. get currentLocation and man.panTo
-  const { map, swimpool } = useSelector(state => ({
-    map: state.map.map,
+  const { map } = useSelector(state => ({ map: state.map.map }));
+  const { swimpool } = useSelector(state => ({
     swimpool: state.swimPool.swimPool,
   }));
   const dispatch = useDispatch();
