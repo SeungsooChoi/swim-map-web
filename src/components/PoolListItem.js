@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import { formatDate } from '../lib/util';
+import { formatDate, getMatchedIndex } from '../lib/util';
 import { mainColor } from '../styles';
-import { moveToMapCoords } from '../lib/mapApi';
+import { openInfoWindow } from '../lib/mapApi';
 
 const PoolListItemBlock = styled.div`
   padding: 1rem;
@@ -25,26 +25,23 @@ const LaneInfo = styled.div`
 `;
 
 const PoolListItem = ({ swimpool }) => {
-  const { map, marker, infoWindow } = useSelector(state => ({
-    map: state.map.map,
-    marker: state.map.marker,
+  const { map } = useSelector(state => ({ map: state.map.map }));
+  const { marker } = useSelector(state => ({ marker: state.map.marker }));
+  const { infoWindow } = useSelector(state => ({
     infoWindow: state.map.infoWindow,
   }));
 
   const onClick = e => {
     const currentId = e.target.parentNode.id;
-    const currentMarker = marker[currentId];
-    const lat = currentMarker.position._lat;
-    const lng = currentMarker.position._lng;
-
-    moveToMapCoords(map, lat, lng);
-    infoWindow[currentId].open(map, currentMarker);
+    const id = getMatchedIndex(swimpool, currentId);
+    openInfoWindow(map, marker, id, infoWindow);
   };
+
   return (
     <>
       {swimpool.length > 0
-        ? swimpool.map((pool, index) => (
-            <PoolListItemBlock key={index} id={index}>
+        ? swimpool.map(pool => (
+            <PoolListItemBlock key={pool.id} id={pool.id}>
               <Header>
                 <span>{pool.sigunguName}</span>
               </Header>

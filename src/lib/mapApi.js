@@ -27,3 +27,12 @@ const hideMarker = (mapObj, marker) => {
   if (!marker.setMap()) return;
   marker.setMap(null);
 };
+
+export const openInfoWindow = (map, marker, selectedId, infoWindow) => {
+  const currentMarker = marker[selectedId];
+  const lat = currentMarker.position._lat;
+  const lng = currentMarker.position._lng;
+
+  moveToMapCoords(map, lat, lng);
+  infoWindow[selectedId].open(map, currentMarker);
+};

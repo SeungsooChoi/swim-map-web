@@ -7,3 +7,10 @@ export const formatDate = date => {
   if (day.length < 2) day = '0' + day;
   return [year, month, day].join('-');
 };
+
+export const getMatchedIndex = (poolList, currentId) => {
+  for (let i = 0; i < poolList.length; i++) {
+    const id = String(poolList[i].id);
+    if (id === currentId) return i;
+  }
+};
