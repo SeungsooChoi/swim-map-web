@@ -1,6 +1,6 @@
 /**
  * 날짜를 받아서 YYYY-MM-DD로 변환하는 함수
- * @param {*} date 날짜
+ * @param {String} date 날짜
  * @returns YYYY-MM-DD
  */
 export const formatDate = date => {
@@ -15,8 +15,8 @@ export const formatDate = date => {
 
 /**
  * 수영장 리스트에서 선택한 수영장이 몇번째에 있는지 반환하는 함수
- * @param {*} poolList 수영장 리스트
- * @param {*} currentId model에 있는 선택한 수영장 id
+ * @param {Array} poolList 수영장 리스트
+ * @param {String} currentId model에 있는 선택한 수영장 id
  * @returns 못찾았을경우 -1, 찾았을 경우 수영장 리스트의 인덱스 반환
  */
 export const getMatchedIndex = (poolList, currentId) => {
