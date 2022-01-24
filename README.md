@@ -19,11 +19,11 @@
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/34928445/148677693-7dd336f1-961d-46af-a0e7-4bac2e2e9992.gif)
 
-<!-- ## 장소 등록(로그인 필요)
-
-진행중
-
 ## 장소 검색
+
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/34928445/150740176-b9116204-e02e-44eb-9117-80d441a8f053.gif)
+
+<!-- ## 장소 등록(로그인 필요)
 
 진행중 -->
 
