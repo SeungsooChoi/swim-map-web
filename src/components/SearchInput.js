@@ -60,7 +60,10 @@ const SearchInput = ({ results, searchValue, onChange, handleClickResult }) => {
     const currentText = e.target.innerHTML;
     handleClickResult(currentText);
     const id = getMatchedIndex(swimpool, currentId);
-    openInfoWindow(map, marker, id, infoWindow);
+
+    if (id !== -1) {
+      openInfoWindow(map, marker, id, infoWindow);
+    }
   };
 
   return (

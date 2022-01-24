@@ -34,7 +34,10 @@ const PoolListItem = ({ swimpool }) => {
   const onClick = e => {
     const currentId = e.target.parentNode.id;
     const id = getMatchedIndex(swimpool, currentId);
-    openInfoWindow(map, marker, id, infoWindow);
+
+    if (id !== -1) {
+      openInfoWindow(map, marker, id, infoWindow);
+    }
   };
 
   return (
