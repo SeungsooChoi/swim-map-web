@@ -79,7 +79,7 @@ const NavigationBar = () => {
       setIsOpen(true);
       return;
     }
-    console.log('장소등록 화면 이동');
+    navigate(routes.register);
   };
 
   // 로그인 팝업 닫는이벤트
