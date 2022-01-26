@@ -7,25 +7,6 @@ import { getMatchedIndex } from '../lib/util';
 import { openInfoWindow } from '../lib/mapApi';
 import { useSelector } from 'react-redux';
 
-const Wrapper = styled.div`
-  width: 25rem;
-  height: 2.5rem;
-  border: 1px solid ${mainColor.lineColor};
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border-radius: 20px;
-  padding: 0px 20px;
-  box-sizing: border-box;
-  position: relative;
-  input {
-    font-size: 1rem;
-    all: unset;
-    margin-left: 1rem;
-    width: 100%;
-  }
-`;
-
 const AutoComplete = styled.ul`
   position: absolute;
   top: 3rem;
@@ -59,15 +40,15 @@ const SearchInput = ({ results, searchValue, onChange, handleClickResult }) => {
     const currentId = e.target.id;
     const currentText = e.target.innerHTML;
     handleClickResult(currentText);
-    const id = getMatchedIndex(swimpool, currentId);
+    const matchedId = getMatchedIndex(swimpool, currentId);
 
-    if (id !== -1) {
-      openInfoWindow(map, marker, id, infoWindow);
+    if (matchedId !== -1) {
+      openInfoWindow(map, marker, matchedId, infoWindow);
     }
   };
 
   return (
-    <Wrapper>
+    <div className="relative w-1/3 flex flex-row items-center p-2 pl-4 bg-white rounded-3xl">
       <FontAwesomeIcon icon={faSearch} size="1x" color={mainColor.fontColor} />
       <input
         name="searchInput"
@@ -76,17 +57,23 @@ const SearchInput = ({ results, searchValue, onChange, handleClickResult }) => {
         placeholder="검색"
         onChange={onChange}
         autoComplete="off"
+        className="ml-2 w-10/12 text-base"
       />
       {results.length > 0 && (
-        <AutoComplete>
+        <ul className="absolute top-11 left-0 z-1 w-full overflow-y-scroll bg-white max-h-60 border border-solid border-blue-600">
           {results.map(data => (
-            <li key={data.id} id={data.id} onClick={onClick}>
+            <li
+              key={data.id}
+              id={data.id}
+              className="text-base pl-10 py-2 hover:cursor-pointer hover:bg-slate-100"
+              onClick={onClick}
+            >
               {data.name}
             </li>
           ))}
-        </AutoComplete>
+        </ul>
       )}
-    </Wrapper>
+    </div>
   );
 };
 

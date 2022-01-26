@@ -1,16 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
 import { moveToMapCoords, updateMarkers } from '../lib/mapApi';
 import useGeolocation from '../hooks/useGeolocation';
 import { formatDate } from '../lib/util';
 import { setInfoWindow, setMarker } from '../modules/map';
 import NaverMap from './naverMap/NaverMap';
-
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-`;
 
 const Map = () => {
   const { map } = useSelector(state => ({ map: state.map.map }));
@@ -118,11 +112,7 @@ const Map = () => {
     }
   }, [location, map]);
 
-  return (
-    <Container>
-      <NaverMap />
-    </Container>
-  );
+  return <NaverMap />;
 };
 
 export default Map;

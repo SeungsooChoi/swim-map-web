@@ -6,13 +6,17 @@ import { elementSize } from '../styles';
 
 const windowHeight = window.innerHeight;
 
+const styleHeight = {
+  height: `${windowHeight - elementSize.navHeight}px`,
+};
+
 const Home = () => {
   return (
     <>
       <NavigationBar />
       <div
         className="flex flex-row justify-between shadow-lg"
-        style={{ height: `${windowHeight - elementSize.navHeight}px` }}
+        style={styleHeight}
       >
         <PoolList />
         <Map />

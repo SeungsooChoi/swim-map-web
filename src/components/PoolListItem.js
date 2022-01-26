@@ -40,15 +40,34 @@ const PoolListItem = ({ swimpool }) => {
     }
   };
 
+  const onClickBackground = e => {
+    const {
+      target,
+      target: { id },
+      currentTarget,
+    } = e;
+    if (target === currentTarget) {
+      const currentId = id;
+      const matchedId = getMatchedIndex(swimpool, currentId);
+
+      if (matchedId !== -1) {
+        openInfoWindow(map, marker, matchedId, infoWindow);
+      }
+    }
+  };
+
   return (
     <>
       {swimpool.length > 0
         ? swimpool.map(pool => (
-            <PoolListItemBlock key={pool.id} id={pool.id}>
-              <Header>
-                <span>{pool.sigunguName}</span>
-              </Header>
-              <h1>
+            <li
+              key={pool.id}
+              id={pool.id}
+              className="p-4 border-b border-solid border-b-slate-300 hover:cursor-pointer hover:bg-slate-100"
+              onClick={onClickBackground}
+            >
+              <span>{pool.sigunguName}</span>
+              <h1 className="mt-2 tracking-tight text-lg font-semibold">
                 {pool.name} ({pool.inOutDoorDivName})
               </h1>
               {pool.roadNmAddr ? (
@@ -73,8 +92,13 @@ const PoolListItem = ({ swimpool }) => {
                 )}
               </LaneInfo>
               <div>업데이트 날짜 :{formatDate(Number(pool.updatedAt))}</div>
-              <button onClick={onClick}>지도에서 보기</button>
-            </PoolListItemBlock>
+              <button
+                className="w-1/2 mt-4 mx-auto p-3 block bg-sky-600/60 text-white rounded-3xl hover:bg-blue-600"
+                onClick={onClick}
+              >
+                지도에서 보기
+              </button>
+            </li>
           ))
         : '데이터를 불러오는 중 입니다.'}
     </>

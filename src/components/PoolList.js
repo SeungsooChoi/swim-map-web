@@ -1,14 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
-import { mainColor } from '../styles';
 import PoolListItem from './PoolListItem';
-
-const ListWrapper = styled.div`
-  width: 25%;
-  border-right: 1px solid ${mainColor.lineColor};
-  overflow-y: scroll;
-`;
 
 const PoolList = () => {
   const { swimpool } = useSelector(state => ({
@@ -16,9 +8,9 @@ const PoolList = () => {
   }));
 
   return (
-    <ListWrapper>
+    <ul className="w-2/6 overflow-y-scroll">
       <PoolListItem swimpool={swimpool} />
-    </ListWrapper>
+    </ul>
   );
 };
 
