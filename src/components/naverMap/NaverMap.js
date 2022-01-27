@@ -1,66 +1,11 @@
 import React, { useEffect } from 'react';
-import { gql, useQuery } from '@apollo/client';
 import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
 import { setMap } from '../../modules/map';
-import { setSwimPool } from '../../modules/swimPool';
 
-const Map = styled.div`
-  width: 100%;
-  height: 100%;
-`;
-
-const SELECT_QUERY = gql`
-  query selectAll {
-    swimPools {
-      id
-      sigunguName
-      name
-      inOutDoorDivName
-      manageMainName
-      contactNo
-      homepageAddr
-      divingLength
-      divingWidth
-      divingDepth
-      regPoolLength
-      regPoolWidth
-      regPoolLaneCnt
-      irregPoolLength
-      irregPoolWidth
-      irregPoolLaneCnt
-      seatCnt
-      personCnt
-      latitude
-      longitude
-      lotNoAddr
-      roadNmAddr
-      remarks
-      updatedAt
-    }
-  }
-`;
 const { naver } = window;
 
 const NaverMap = () => {
-  const { data, loading } = useQuery(SELECT_QUERY);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (loading) {
-      return;
-    }
-    // DB에서 수영장 정보 가져와서 store에 저장
-    const dispatchSwimPool = () => {
-      let pools = [...data.swimPools];
-      const sortedPools = pools.sort((a, b) => a.id - b.id);
-      dispatch(setSwimPool(sortedPools), [sortedPools]);
-    };
-
-    if (data !== undefined) {
-      dispatchSwimPool();
-    }
-  }, [loading, data, dispatch]);
 
   useEffect(() => {
     const options = {
@@ -84,7 +29,7 @@ const NaverMap = () => {
     dispatch(setMap(map), [map]);
   }, [dispatch]);
 
-  return <Map id="map" className="map" />;
+  return <div id="map" className="map w-full h-full"></div>;
 };
 
 export default NaverMap;
