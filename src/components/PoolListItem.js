@@ -1,28 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { formatDate, getMatchedIndex } from '../lib/util';
-import { mainColor } from '../styles';
 import { openInfoWindow } from '../lib/mapApi';
-
-const PoolListItemBlock = styled.div`
-  padding: 1rem;
-  border-bottom: 1px solid ${mainColor.lineColor};
-`;
-
-const Header = styled.header`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const LaneInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  span {
-    margin-bottom: 1rem;
-  }
-`;
 
 const PoolListItem = ({ swimpool }) => {
   const { map } = useSelector(state => ({ map: state.map.map }));
