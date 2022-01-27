@@ -1,30 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
-import { mainColor } from '../styles';
+import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { mainColor } from '../styles';
 import { getMatchedIndex } from '../lib/util';
 import { openInfoWindow } from '../lib/mapApi';
-import { useSelector } from 'react-redux';
-
-const AutoComplete = styled.ul`
-  position: absolute;
-  top: 3rem;
-  left: 0;
-  z-index: 1;
-  width: inherit;
-  background: white;
-  border: 1px solid #80c7fa;
-  max-height: 15rem;
-  overflow-y: scroll;
-  li {
-    padding: 0.5rem 0rem;
-    cursor: pointer;
-    :not(:last-child) {
-      border-bottom: 1px solid #5cd1f5;
-    }
-  }
-`;
 
 const SearchInput = ({ results, searchValue, onChange, handleClickResult }) => {
   const { map } = useSelector(state => ({ map: state.map.map }));
@@ -65,7 +45,7 @@ const SearchInput = ({ results, searchValue, onChange, handleClickResult }) => {
             <li
               key={data.id}
               id={data.id}
-              className="text-base pl-10 py-2 hover:cursor-pointer hover:bg-slate-100"
+              className="text-base pl-10 py-2 hover:cursor-pointer hover:bg-slate-100 border-b border-solid border-b-cgBlue"
               onClick={onClick}
             >
               {data.name}
