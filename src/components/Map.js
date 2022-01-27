@@ -6,6 +6,43 @@ import { formatDate } from '../lib/util';
 import { setInfoWindow, setMarker } from '../modules/map';
 import NaverMap from './naverMap/NaverMap';
 
+/**
+ * InfoWindow String 리턴
+ * @param {Object} pool
+ * @returns
+ */
+const createInfoWindow = pool => {
+  return `<div class="flex flex-col p-4 rounded-lg w-80 text-sm bg-white shadow-2xl shadow-cgBlue/50">
+            <span>${pool.sigunguName}</span>
+            <h1 class="mt-3 text-base">
+              ${pool.name} (${pool.inOutDoorDivName})
+            </h1>
+            ${
+              pool.roadNmAddr
+                ? `<span>${pool.roadNmAddr}</span>`
+                : pool.lotNoAddr
+                ? `<span>${pool.lotNoAddr}</span>`
+                : `<span>등록된 주소 정보가 없습니다.</span>`
+            }
+            <p class="my-2">
+              ${
+                pool.regPoolLaneCnt > 0
+                  ? `<span>${pool.regPoolLength}m 레인 : ${pool.regPoolLaneCnt}개</span>`
+                  : ''
+              }
+
+              ${
+                pool.irregPoolLaneCnt > 0
+                  ? `<span>${pool.irregPoolLength}m 레인 : ${pool.irregPoolLaneCnt}개</span>`
+                  : ''
+              }
+            </p>
+            <div class="text-xs text-right">업데이트 날짜 :${formatDate(
+              Number(pool.updatedAt),
+            )}</div>
+          </div>`;
+};
+
 const Map = () => {
   const { map } = useSelector(state => ({ map: state.map.map }));
   const { swimpool } = useSelector(state => ({
@@ -40,33 +77,7 @@ const Map = () => {
         });
 
         let infoWindow = new naver.maps.InfoWindow({
-          content: `<div class="iw_inner">
-                        <span>${pool.sigunguName}</span>
-                        <h1>${pool.name} (${pool.inOutDoorDivName})</h1>
-                        ${
-                          pool.roadNmAddr
-                            ? `<span>${pool.roadNmAddr}</span>`
-                            : pool.lotNoAddr
-                            ? `<span>${pool.lotNoAddr}</span>`
-                            : `<span>등록된 주소 정보가 없습니다.</span>`
-                        }
-                        <div>
-                          ${
-                            pool.regPoolLaneCnt > 0
-                              ? `<span>${pool.regPoolLength}m 레인 : ${pool.regPoolLaneCnt}개</span>`
-                              : ''
-                          }
-          
-                          ${
-                            pool.irregPoolLaneCnt > 0
-                              ? `<span>${pool.irregPoolLength}m 레인 : ${pool.irregPoolLaneCnt}개</span>`
-                              : ''
-                          }
-                        </div>
-                        <div>업데이트 날짜 :${formatDate(
-                          Number(pool.updatedAt),
-                        )}</div>
-                      </div>`,
+          content: createInfoWindow(pool),
           borderWidth: 0,
           disableAnchor: true,
           backgroundColor: 'transparent',

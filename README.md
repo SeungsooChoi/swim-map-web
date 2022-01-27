@@ -18,11 +18,11 @@
 
 ## 장소 안내
 
-![infoSwimmingPool](https://user-images.githubusercontent.com/34928445/151286653-b73d9272-8963-4fdc-b72a-de3b71d169fe.gif)
+![info](https://user-images.githubusercontent.com/34928445/151295924-d6d65dbd-e8b8-4813-9ca0-015a0788df4a.gif)
 
 ## 장소 검색
 
-![searchSwimmingPool](https://user-images.githubusercontent.com/34928445/151286698-4c5052bc-6121-40e7-a9f3-52170e16a30e.gif)
+![search](https://user-images.githubusercontent.com/34928445/151296040-3b22cbff-3382-4d0e-91d7-e01b57a9553d.gif)
 
 <!-- ## 장소 등록(로그인 필요)
 

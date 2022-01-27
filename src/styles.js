@@ -16,28 +16,4 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
-  .iw_inner {
-    width: 400px;
-    height: 200px;
-    background: white;
-    border: 1px solid #dddddd;
-    border-radius: 10px;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-
-  .iw_inner::after {
-    content: "";
-    position: absolute;
-    bottom: -18px;
-    left: 50%;
-    border-top: 20px solid white;
-    border-right: 20px solid transparent;
-  }
-
-  .iw_inner h1 {
-    font-size: 1.5rem;
-    color: #333;
-  }
-
 `;
