@@ -63,7 +63,7 @@ const PoolListItem = ({ swimpool }) => {
             <li
               key={pool.id}
               id={pool.id}
-              className="p-4 border-b border-solid border-b-slate-300 hover:cursor-pointer hover:bg-slate-100"
+              className="p-4 border-b border-solid border-b-skyBlue hover:cursor-pointer hover:bg-slate-100 text-sm"
               onClick={onClickBackground}
             >
               <span>{pool.sigunguName}</span>
@@ -78,7 +78,7 @@ const PoolListItem = ({ swimpool }) => {
                 <span>등록된 주소 정보가 없습니다.</span>
               )}
 
-              <LaneInfo>
+              <p className="my-2">
                 {pool.regPoolLaneCnt > 0 && (
                   <span>
                     {pool.regPoolLength}m 레인 : {pool.regPoolLaneCnt}개
@@ -90,10 +90,12 @@ const PoolListItem = ({ swimpool }) => {
                     {pool.irregPoolLength}m 레인 : {pool.irregPoolLaneCnt}개
                   </span>
                 )}
-              </LaneInfo>
-              <div>업데이트 날짜 :{formatDate(Number(pool.updatedAt))}</div>
+              </p>
+              <div className="text-xs text-right">
+                {formatDate(Number(pool.updatedAt))}
+              </div>
               <button
-                className="w-1/2 mt-4 mx-auto p-3 block bg-sky-600/60 text-white rounded-3xl hover:bg-blue-600"
+                className="w-32 mt-1 mx-auto p-1.5 block bg-blueSapphire/70 text-white rounded-xl hover:bg-cgBlue"
                 onClick={onClick}
               >
                 지도에서 보기

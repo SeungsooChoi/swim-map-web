@@ -5,23 +5,24 @@
 ## 사용 기술
 
 <div align=center>
-  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-  <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
-  <img src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=React Router&logoColor=black">
-  <img src="https://img.shields.io/badge/fontawesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white">
-  <img src="https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=GraphQL&logoColor=white">
-  <img src="https://img.shields.io/badge/Apollo GraphQL-311C87?style=for-the-badge&logo=Apollo GraphQL&logoColor=white">
-  <img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
-  <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white">
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?logo=javascript&logoColor=black">
+  <img src="https://img.shields.io/badge/react-61DAFB?logo=react&logoColor=black">
+  <img src="https://img.shields.io/badge/React Router-CA4245?logo=React Router&logoColor=black">
+  <img src="https://img.shields.io/badge/fontawesome-339AF0?logo=fontawesome&logoColor=white">
+  <img src="https://img.shields.io/badge/GraphQL-E10098?logo=GraphQL&logoColor=white">
+  <img src="https://img.shields.io/badge/Apollo GraphQL-311C87?logo=Apollo GraphQL&logoColor=white">
+  <img src="https://img.shields.io/badge/styled components-DB7093?logo=styled-components&logoColor=white">
+  <img src="https://img.shields.io/badge/Redux-764ABC?logo=Redux&logoColor=white">
+  <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?logo=Tailwind CSS&logoColor=white">
 </div>
 
 ## 장소 안내
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/34928445/148677693-7dd336f1-961d-46af-a0e7-4bac2e2e9992.gif)
+![infoSwimmingPool](https://user-images.githubusercontent.com/34928445/151286653-b73d9272-8963-4fdc-b72a-de3b71d169fe.gif)
 
 ## 장소 검색
 
-![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/34928445/150740176-b9116204-e02e-44eb-9117-80d441a8f053.gif)
+![searchSwimmingPool](https://user-images.githubusercontent.com/34928445/151286698-4c5052bc-6121-40e7-a9f3-52170e16a30e.gif)
 
 <!-- ## 장소 등록(로그인 필요)
 

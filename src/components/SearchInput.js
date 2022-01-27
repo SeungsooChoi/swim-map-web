@@ -57,10 +57,10 @@ const SearchInput = ({ results, searchValue, onChange, handleClickResult }) => {
         placeholder="검색"
         onChange={onChange}
         autoComplete="off"
-        className="ml-2 w-10/12 text-base"
+        className="ml-2 w-full text-base"
       />
       {results.length > 0 && (
-        <ul className="absolute top-11 left-0 z-1 w-full overflow-y-scroll bg-white max-h-60 border border-solid border-blue-600">
+        <ul className="absolute top-11 left-0 z-1 w-full overflow-y-scroll bg-white max-h-60 border border-solid border-midNightGreen">
           {results.map(data => (
             <li
               key={data.id}
