@@ -114,7 +114,7 @@ const Login = () => {
         link={routes.signUp}
         linkText="회원가입"
       />
-      <BottomBox cta="" link="/" linkText="처음 화면으로" />
+      <BottomBox cta="" link={routes.home} linkText="처음 화면으로" />
     </LoginModal>
   );
 };
