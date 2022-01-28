@@ -11,31 +11,6 @@ const Content = styled.p`
   margin-top: 2rem;
 `;
 
-const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 60%;
-`;
-
-const SButton = styled.button`
-  all: unset;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 40px;
-  border: 1px solid #dddddd;
-  color: #80c7fa;
-  border-radius: 25px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  cursor: pointer;
-  :hover {
-    color: #1f8cff;
-  }
-`;
-
 Modal.setAppElement('#root');
 
 const ModalPopup = ({
@@ -56,11 +31,9 @@ const ModalPopup = ({
       zIndex: 100,
       backgroundColor: 'rgba(0, 0 , 0, 0.75)',
       display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
     },
     content: {
-      inset: '30%',
+      inset: '35%',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -70,15 +43,27 @@ const ModalPopup = ({
     <Modal
       isOpen={isOpen}
       contentLabel={content}
-      style={styles}
       onRequestClose={onRequestClose}
+      style={styles}
     >
-      <Title>{title}</Title>
-      <Content>{content}</Content>
-      <ButtonWrapper>
-        <SButton onClick={() => handleClickOk()}>예</SButton>
-        <SButton onClick={() => close()}>아니오</SButton>
-      </ButtonWrapper>
+      <div className="my-auto flex flex-col items-center">
+        <h1 className="text-2xl">{title}</h1>
+        <Content>{content}</Content>
+        <div className="flex flex-row justify-between mt-8 w-full">
+          <button
+            className="block mt-1 mx-auto p-2 w-32  bg-blueSapphire/70 text-white rounded-xl hover:bg-cgBlue"
+            onClick={() => handleClickOk()}
+          >
+            예
+          </button>
+          <button
+            className="block mt-1 mx-auto p-2 w-32  bg-blueSapphire/70 text-white rounded-xl hover:bg-cgBlue"
+            onClick={() => close()}
+          >
+            아니오
+          </button>
+        </div>
+      </div>
     </Modal>
   );
 };

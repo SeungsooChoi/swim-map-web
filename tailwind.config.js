@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       zIndex: {
         1: '1',
+        100: '100',
       },
       ringWidth: {
         0: 0,
