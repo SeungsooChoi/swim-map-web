@@ -12,7 +12,7 @@ import NaverMap from './naverMap/NaverMap';
  * @returns
  */
 const createInfoWindow = pool => {
-  return `<div class="flex flex-col p-4 rounded-lg w-80 text-sm bg-white shadow-2xl shadow-cgBlue/50">
+  return `<div class="flex flex-col p-4 rounded-lg w-80 text-sm bg-white shadow-2xl shadow-cgBlue/50 border border-solid border-midNightGreen">
             <span>${pool.sigunguName}</span>
             <h1 class="mt-3 text-base">
               ${pool.name} (${pool.inOutDoorDivName})

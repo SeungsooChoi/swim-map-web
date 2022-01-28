@@ -1,17 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-
-const SBottomBox = styled.div`
-  text-align: center;
-`;
 
 const BottomBox = ({ cta, link, linkText }) => {
   return (
-    <SBottomBox>
-      <span>{cta}</span>
-      <Link to={link}>{linkText}</Link>
-    </SBottomBox>
+    <div className="mb-5 text-center">
+      <span className="mr-3">{cta}</span>
+      <Link to={link} className="text-cgBlue/80 font-semibold">
+        {linkText}
+      </Link>
+    </div>
   );
 };
 

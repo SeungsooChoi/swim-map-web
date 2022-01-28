@@ -1,34 +1,14 @@
-import { gql, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import { gql, useMutation } from '@apollo/client';
 import { userLogIn } from '../apollo';
 import useInputs from '../hooks/useInputs';
-import { mainColor } from '../styles';
 import AuthLayout from '../components/user/AuthLayout';
 import BottomBox from '../components/user/BottomBox';
 import Button from '../components/user/Button';
 import Input from '../components/user/Input';
 import Separator from '../components/user/Separator';
 import routes from '../routes';
-
-const LoginModal = styled.div`
-  background: white;
-  width: 500px;
-  height: 600px;
-  margin: 12rem auto;
-  position: relative;
-`;
-
-const SLink = styled(Link)`
-  text-decoration: none;
-`;
-
-const Logo = styled.h1`
-  font-size: 3rem;
-  font-weight: bold;
-  color: ${mainColor.fontColor};
-`;
 
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
@@ -79,43 +59,46 @@ const Login = () => {
   };
 
   return (
-    <LoginModal>
+    <div className="h-screen">
       <AuthLayout>
-        <SLink to="/">
-          <Logo>swim</Logo>
-        </SLink>
-        <form onSubmit={onSubmit}>
-          <Input
-            type="email"
-            name="email"
-            placeholder="이메일"
-            onChange={onChange}
-            value={email}
-            required
-          />
-          <Input
-            type="password"
-            name="password"
-            placeholder="비밀번호"
-            onChange={onChange}
-            value={password}
-            required
-          />
-          <Button type="submit" disabled={password.length < 4}>
-            로그인
-          </Button>
+        <Link to={routes.home}>
+          <h1 className="text-7xl text-cgBlue font-semibold">Swim</h1>
+        </Link>
+        <form onSubmit={onSubmit} className="mt-10 w-full">
+          <label className="block mb-4 w-full">
+            <span className="block font-medium text-slate-700">이메일</span>
+            <Input
+              type="email"
+              name="email"
+              placeholder="swim@example.com"
+              onChange={onChange}
+              value={email}
+              required
+            />
+          </label>
+          <label className="block mb-4 w-full">
+            <span className="block font-medium text-slate-700">비밀번호</span>
+            <Input
+              type="password"
+              name="password"
+              onChange={onChange}
+              value={password}
+              required
+            />
+          </label>
+          <Button type="submit">로그인</Button>
           {errors}
         </form>
 
         <Separator />
+        <BottomBox
+          cta="가입된 계정이 없으신가요?"
+          link={routes.signUp}
+          linkText="회원가입"
+        />
+        <BottomBox cta="" link={routes.home} linkText="처음 화면으로" />
       </AuthLayout>
-      <BottomBox
-        cta="가입된 계정이 없으신가요?"
-        link={routes.signUp}
-        linkText="회원가입"
-      />
-      <BottomBox cta="" link={routes.home} linkText="처음 화면으로" />
-    </LoginModal>
+    </div>
   );
 };
 

@@ -68,7 +68,7 @@ const NavigationBar = () => {
 
   return (
     <div className="flex flex-row justify-around items-center h-16 bg-midNightGreen">
-      <h1 className="font-sans text-3xl text-white">Swim</h1>
+      <h1 className="text-3xl text-white">Swim</h1>
       <SearchInput
         results={results}
         searchValue={searchValue}

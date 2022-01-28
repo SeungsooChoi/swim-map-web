@@ -1,23 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const SButton = styled.button`
-  margin-top: 0.5rem;
-  padding: 0.5rem 0;
-  width: 100%;
-  font-size: 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  background-color: #0095f6;
-  color: white;
-  text-align: center;
-  font-weight: 600;
-  cursor: pointer;
-  opacity: ${props => (props.disabled ? '0.2' : '1')};
-`;
 
 const Button = props => {
-  return <SButton {...props} />;
+  return (
+    <button
+      className={`mt-4 p-3 w-full font-semibold text-white bg-midNightGreen/70 rounded-lg`}
+      {...props}
+    ></button>
+  );
 };
 
 export default Button;

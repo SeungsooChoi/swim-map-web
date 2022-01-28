@@ -1,22 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const SInput = styled.input`
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  width: 100%;
-  background-color: #fafafa;
-  border: 0.5px solid rgb(219, 219, 219);
-  border-radius: 0.25rem;
-  box-sizing: border-box;
-  font-size: 1.25rem;
-  &::placeholder {
-    font-size: 1.25rem;
-  }
-`;
 
 const Input = props => {
-  return <SInput {...props} />;
+  return (
+    <input
+      className="block mt-3 px-3 py-2 w-full border border-slate-400 rounded-md shadow-sm"
+      {...props}
+    />
+  );
 };
 
 export default Input;

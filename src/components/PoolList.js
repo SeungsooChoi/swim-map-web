@@ -8,7 +8,7 @@ const PoolList = () => {
   }));
 
   return (
-    <ul className="w-1/4 overflow-y-scroll border-r border-solid border-r-skyBlue">
+    <ul className="w-1/4 overflow-y-scroll border-r border-solid border-r-midNightGreen">
       <PoolListItem swimpool={swimpool} />
     </ul>
   );
