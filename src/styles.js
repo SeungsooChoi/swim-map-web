@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
 export const mainColor = {
-  fontColor: '#80c7fa',
+  fontColor: '#7BC9E3',
   lineColor: '#5cd1f5',
 };
 
