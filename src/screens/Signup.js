@@ -1,29 +1,13 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { gql, useMutation } from '@apollo/client';
-import styled from 'styled-components';
 import AuthLayout from '../components/user/AuthLayout';
 import Button from '../components/user/Button';
 import Input from '../components/user/Input';
 import Separator from '../components/user/Separator';
-import { mainColor } from '../styles';
 import useInputs from '../hooks/useInputs';
 import BottomBox from '../components/user/BottomBox';
-
-const SWrapper = styled.div`
-  margin-top: 10rem;
-  padding: 0rem 20rem;
-`;
-
-const SLink = styled(Link)`
-  text-decoration: none;
-`;
-
-const Logo = styled.h1`
-  font-size: 3rem;
-  font-weight: bold;
-  color: ${mainColor.fontColor};
-`;
+import routes from '../routes';
 
 const SIGNUP_MUTATION = gql`
   mutation createAccount(
@@ -83,12 +67,12 @@ const Signup = () => {
   };
 
   return (
-    <SWrapper>
+    <>
       <AuthLayout>
-        <SLink to="/">
-          <Logo>swim</Logo>
-        </SLink>
-        <form onSubmit={onSubmit}>
+        <Link to={routes.home}>
+          <h1 className="text-7xl text-cgBlue font-semibold">Swim</h1>
+        </Link>
+        <form onSubmit={onSubmit} className="mt-10 w-full">
           <Input
             type="text"
             name="lastName"
@@ -128,9 +112,9 @@ const Signup = () => {
         </form>
 
         <Separator />
-        <BottomBox cta="" link="/" linkText="처음 화면으로" />
+        <BottomBox cta="" link={routes.home} linkText="처음 화면으로" />
       </AuthLayout>
-    </SWrapper>
+    </>
   );
 };
 
