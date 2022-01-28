@@ -111,7 +111,7 @@ const Map = () => {
       }
     };
 
-    if (swimpool.length > 0) {
+    if (swimpool.length > 0 && map) {
       paintMarker();
     }
   }, [swimpool, map, dispatch]);
