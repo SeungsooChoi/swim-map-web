@@ -1,24 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-`;
-const Divider = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  margin-top: 1rem;
-`;
-
-const Wrapper = styled.div``;
-
-const Title = styled.h1``;
+import Input from '../components/user/Input';
 
 const Register = () => {
   // Todo
@@ -41,43 +22,39 @@ const Register = () => {
   // 8. 기타
 
   return (
-    <Container>
-      <Title>신규 장소 추가</Title>
-      <Divider>
-        <Wrapper>
-          <form>
-            <div>
-              <label htmlFor="name">장소명</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="수영장 이름을 입력해주세요."
-              />
-            </div>
-            <div>
-              <label htmlFor="position">위치</label>
-              <input
-                type="text"
-                name="position"
-                id="position"
-                placeholder="임시 항목"
-              />
-            </div>
-            <div>
-              <label htmlFor="poolLength">시설현황</label>
-              <input
-                type="text"
-                name="poolLength"
-                id="poolLength"
-                placeholder="임시 항목"
-              />
-            </div>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h1>신규 장소 추가</h1>
+      <div className="flex flex-row justify-center mt-4 w-full">
+        {/* input 요소들이 들어갈 공간 */}
+        <div className="mr-12">
+          <form className="mt-10">
+            <Input
+              text="장소명"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="수영장 이름을 입력해주세요."
+            />
+            <Input
+              text="위치"
+              type="text"
+              name="position"
+              id="position"
+              placeholder="임시 항목"
+            />
+            <Input
+              text="수영장 정보"
+              type="text"
+              name="poolLength"
+              id="poolLength"
+              placeholder="임시 항목"
+            />
           </form>
-        </Wrapper>
-        <Wrapper>장소</Wrapper>
-      </Divider>
-    </Container>
+        </div>
+        {/* 장소 위치 추가시 map 객체가 들어갈 공간 */}
+        <div>장소</div>
+      </div>
+    </div>
   );
 };
 
