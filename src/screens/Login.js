@@ -65,27 +65,23 @@ const Login = () => {
           <h1 className="text-7xl text-cgBlue font-semibold">Swim</h1>
         </Link>
         <form onSubmit={onSubmit} className="mt-10 w-full">
-          <label className="block mb-4 w-full">
-            <span className="block font-medium text-slate-700">이메일</span>
-            <Input
-              type="email"
-              name="email"
-              placeholder="swim@example.com"
-              onChange={onChange}
-              value={email}
-              required
-            />
-          </label>
-          <label className="block mb-4 w-full">
-            <span className="block font-medium text-slate-700">비밀번호</span>
-            <Input
-              type="password"
-              name="password"
-              onChange={onChange}
-              value={password}
-              required
-            />
-          </label>
+          <Input
+            text="이메일"
+            type="email"
+            name="email"
+            placeholder="swim@example.com"
+            onChange={onChange}
+            value={email}
+            required
+          />
+          <Input
+            text="비밀번호"
+            type="password"
+            name="password"
+            onChange={onChange}
+            value={password}
+            required
+          />
           <Button type="submit">로그인</Button>
           {errors}
         </form>
