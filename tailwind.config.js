@@ -15,9 +15,6 @@ module.exports = {
         cgBlue: '#047094',
         skyBlue: '#7BC9E3',
       },
-      transitionProperty: {
-        width: 'width',
-      },
     },
   },
   plugins: [],
