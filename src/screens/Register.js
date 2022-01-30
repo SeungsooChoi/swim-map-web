@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import Input from '../components/user/Input';
-import DaumPostCode from 'react-daum-postcode';
 import BottomBox from '../components/user/BottomBox';
 import routes from '../routes';
-
-const postCodeStyles = {
-  width: '20rem',
-  height: '30rem',
-};
 
 const Register = () => {
   // Todo
@@ -15,7 +9,6 @@ const Register = () => {
   // 2. 주소에 대한 부분은 주소검색 또는 지도에서 직접 설정할 수 있도록 해야한다고 가정
   //      2-1. 주소검색 API 찾아보기
   //      2-2. 직접 설정하는경우는 API문서 읽어봐야 함
-  // 3. 라우터 설정하여 둘다 탭으로 자유롭게 볼수있게
 
   // 받아야 할 데이터
   // 1. 장소명 (필수)
@@ -28,15 +21,17 @@ const Register = () => {
   // 6. 홈페이지
   // 7. 운영시간
   // 8. 기타
-  const [active, setActive] = useState(false);
+  const [address, setAddress] = useState('');
+  const { daum } = window;
 
-  const searchAddrClick = e => {
-    e.preventDefault();
-    if (!active) {
-      setActive(true);
-    } else {
-      setActive(false);
-    }
+  const handleAddressClick = () => {
+    new daum.Postcode({
+      oncomplete: function (data) {
+        let fullAddress = data.address;
+
+        setAddress(fullAddress);
+      },
+    }).open();
   };
 
   return (
@@ -45,7 +40,7 @@ const Register = () => {
       <div className="flex flex-row justify-center mt-4 w-full">
         {/* input 요소들이 들어갈 공간 */}
         <div>
-          <form className="mt-10">
+          <form className="mt-10 w-96">
             <Input
               text="장소명"
               type="text"
@@ -53,23 +48,23 @@ const Register = () => {
               id="name"
               placeholder="수영장 이름을 입력해주세요."
             />
-            {/* <Input
-              text="위치"
-              type="text"
-              name="position"
-              id="position"
-              placeholder="임시 항목"
-            /> */}
-
             <label className="block mb-4 w-full">
               <span className="block font-medium text-slate-700">위치</span>
-              <button
-                onClick={searchAddrClick}
-                className="block mt-3 px-3 py-2 w-full border border-slate-400 rounded-md shadow-sm"
-              >
-                &gt;
-              </button>
+              <input
+                type="button"
+                name="address"
+                onClick={handleAddressClick}
+                value={address}
+                className="block mt-3 px-3 py-2 w-full border border-slate-400 rounded-md shadow-sm cursor-pointer text-left"
+              />
             </label>
+            <Input
+              text="상세주소"
+              type="text"
+              name="detailAddress"
+              id="detailAddress"
+              placeholder="상세정보를 입력하세요. (예: 동, 층, 호)"
+            />
             <Input
               text="수영장 정보"
               type="text"
@@ -78,10 +73,6 @@ const Register = () => {
               placeholder="임시 항목"
             />
           </form>
-        </div>
-        {/* 장소 위치 추가시 map 객체가 들어갈 공간 */}
-        <div className={`${active ? `w-3/12` : `w-0`} overflow-hidden`}>
-          <DaumPostCode />
         </div>
       </div>
       <BottomBox cta="" link={routes.home} linkText="처음 화면으로" />
