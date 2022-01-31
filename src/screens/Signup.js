@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { gql, useMutation } from '@apollo/client';
 import AuthLayout from '../components/user/AuthLayout';
 import Button from '../components/user/Button';
-import Input from '../components/user/Input';
+import Input from '../components/Input';
 import Separator from '../components/user/Separator';
 import useInputs from '../hooks/useInputs';
 import BottomBox from '../components/user/BottomBox';

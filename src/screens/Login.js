@@ -6,7 +6,7 @@ import useInputs from '../hooks/useInputs';
 import AuthLayout from '../components/user/AuthLayout';
 import BottomBox from '../components/user/BottomBox';
 import Button from '../components/user/Button';
-import Input from '../components/user/Input';
+import Input from '../components/Input';
 import Separator from '../components/user/Separator';
 import routes from '../routes';
 
