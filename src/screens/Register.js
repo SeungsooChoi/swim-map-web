@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import Input from '../components/user/Input';
+import Input from '../components/Input';
 import BottomBox from '../components/user/BottomBox';
 import routes from '../routes';
 import Button from '../components/user/Button';
+import RadioButton from '../components/RadioButton';
 
 const Register = () => {
   // Todo
@@ -78,13 +79,7 @@ const Register = () => {
           id="detailAddress"
           placeholder="상세정보를 입력하세요. (예: 동, 층, 호)"
         />
-        <Input
-          text="수영장 정보"
-          type="text"
-          name="poolLength"
-          id="poolLength"
-          placeholder="임시 항목"
-        />
+        <RadioButton textArr={['25m', '50m', '기타']} required />
         <Button type="submit">등록</Button>
       </form>
       <BottomBox cta="" link={routes.home} linkText="처음 화면으로" />
