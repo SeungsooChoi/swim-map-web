@@ -7,6 +7,7 @@ const GET_PROFILE = gql`
     seeProfile {
       id
       username
+      isAdmin
     }
   }
 `;
