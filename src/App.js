@@ -10,6 +10,8 @@ import Signup from './screens/Signup';
 import NotFound from './screens/NotFound';
 import Register from './screens/Register';
 import { setSwimPool } from './modules/swimPool';
+import PrivateRoute from './components/PrivateRoute';
+import Admin from './screens/Admin';
 
 function App() {
   const { data, loading } = useSwimPools();
@@ -37,6 +39,14 @@ function App() {
           <Route path={routes.login} element={<Login />} />
           <Route path={routes.signUp} element={<Signup />} />
           <Route path={routes.register} element={<Register />} />
+          <Route
+            path={routes.admin}
+            element={
+              <PrivateRoute>
+                <Admin />
+              </PrivateRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

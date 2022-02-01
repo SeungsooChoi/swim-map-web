@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { userLogOut } from '../../apollo';
 import useUser from '../../hooks/useUser';
+import routes from '../../routes';
 
 const Profile = () => {
   const { data } = useUser();
@@ -20,6 +22,14 @@ const Profile = () => {
           >
             로그아웃
           </button>
+          {data.seeProfile.isAdmin && (
+            <Link
+              className="px-2 py-1 border border-white rounded-3xl text-white font-semibold"
+              to={routes.admin}
+            >
+              Admin
+            </Link>
+          )}
         </>
       )}
     </div>
