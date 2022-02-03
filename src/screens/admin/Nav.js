@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../../routes';
-import Clock from './Clock';
+import Clock from '../../components/admin/Clock';
 
 const Nav = () => {
   return (
