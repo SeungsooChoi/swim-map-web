@@ -1,5 +1,5 @@
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { GlobalStyles } from './styles';
 import useSwimPools from './hooks/useSwimPools';
@@ -12,6 +12,7 @@ import Register from './screens/Register';
 import { setSwimPool } from './modules/swimPool';
 import PrivateRoute from './components/PrivateRoute';
 import Admin from './screens/Admin';
+import List from './screens/admin/List';
 
 function App() {
   const { data, loading } = useSwimPools();
@@ -39,14 +40,17 @@ function App() {
           <Route path={routes.login} element={<Login />} />
           <Route path={routes.signUp} element={<Signup />} />
           <Route path={routes.register} element={<Register />} />
+          {/* 중첩 라우팅 */}
           <Route
-            path={routes.admin}
+            path={routes.admin.home}
             element={
               <PrivateRoute>
                 <Admin />
               </PrivateRoute>
             }
-          />
+          >
+            <Route path={routes.admin.list} element={<List />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

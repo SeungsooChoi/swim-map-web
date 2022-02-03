@@ -1,26 +1,13 @@
 import React from 'react';
-import { elementSize } from '../styles';
-import AdminNav from './admin/AdminNav';
-
-const windowHeight = window.innerHeight;
-
-const styleHeight = {
-  height: `${windowHeight - elementSize.navHeight}px`,
-};
+import { Outlet } from 'react-router-dom';
+import Nav from './admin/Nav';
 
 const Admin = () => {
   return (
-    <>
-      <AdminNav />
-      <div
-        className="flex flex-row justify-between shadow-lg"
-        style={styleHeight}
-      >
-        <div className="w-1/4  border-r border-solid border-r-midNightGreen">
-          <div>메뉴</div>
-        </div>
-      </div>
-    </>
+    <div className="flex flex-row">
+      <Nav />
+      <Outlet />
+    </div>
   );
 };
 
