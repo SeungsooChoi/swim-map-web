@@ -25,7 +25,7 @@ const Profile = () => {
           {data.seeProfile.isAdmin && (
             <Link
               className="px-2 py-1 border border-white rounded-3xl text-white font-semibold"
-              to={routes.admin.home}
+              to={`${routes.admin}/dashboard`}
             >
               Admin
             </Link>

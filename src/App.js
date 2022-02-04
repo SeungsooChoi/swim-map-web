@@ -12,6 +12,7 @@ import Register from './screens/Register';
 import { setSwimPool } from './modules/swimPool';
 import PrivateRoute from './components/PrivateRoute';
 import Admin from './screens/Admin';
+import Dashboard from './screens/admin/Dashboard';
 import List from './screens/admin/List';
 
 function App() {
@@ -42,14 +43,15 @@ function App() {
           <Route path={routes.register} element={<Register />} />
           {/* 중첩 라우팅 */}
           <Route
-            path={routes.admin.home}
+            path={routes.admin}
             element={
               <PrivateRoute>
                 <Admin />
               </PrivateRoute>
             }
           >
-            <Route path={routes.admin.list} element={<List />} />
+            <Route path={routes.dashboard} element={<Dashboard />} />
+            <Route path={routes.list} element={<List />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

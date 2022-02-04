@@ -1,6 +1,6 @@
 /**
  * 날짜를 받아서 YYYY-MM-DD로 변환하는 함수
- * @param {String} date 날짜
+ * @param {Number} date 날짜
  * @returns YYYY-MM-DD
  */
 export const formatDate = date => {

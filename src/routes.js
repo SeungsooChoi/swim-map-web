@@ -3,10 +3,9 @@ const routes = {
   login: '/login',
   signUp: '/sign-up',
   register: '/register',
-  admin: {
-    home: '/admin',
-    list: '/admin/list',
-  },
+  admin: 'admin',
+  dashboard: 'dashboard',
+  list: 'list',
 };
 
 export default routes;
