@@ -1,15 +1,5 @@
 import React from 'react';
 import Modal from 'react-modal';
-import styled from 'styled-components';
-
-const Title = styled.h1`
-  font-size: 1.8rem;
-`;
-
-const Content = styled.p`
-  font-size: 1.5rem;
-  margin-top: 2rem;
-`;
 
 Modal.setAppElement('#root');
 
@@ -48,7 +38,7 @@ const ModalPopup = ({
     >
       <div className="my-auto flex flex-col items-center">
         <h1 className="text-2xl">{title}</h1>
-        <Content>{content}</Content>
+        <p className="mt-8 text-2xl">{content}</p>
         <div className="flex flex-row justify-between mt-8 w-full">
           <button
             className="block mt-1 mx-auto p-2 w-32  bg-blueSapphire/70 text-white rounded-xl hover:bg-cgBlue"

@@ -2,8 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../../routes';
 import Clock from '../../components/admin/Clock';
+import { userLogOut } from '../../apollo';
 
 const Nav = () => {
+  const handleClickLogout = () => {
+    userLogOut();
+  };
   return (
     <nav className="flex flex-col items-center w-1/4 h-screen border-r border-solid border-r-midNightGreen">
       <Link to={routes.home} className="mt-20">
@@ -30,7 +34,12 @@ const Nav = () => {
           <Link to={routes.userManagement}>회원 관리</Link>
         </li>
         <li className="mt-8 underline font-bold text-blueSapphire cursor-pointer hover:text-skyBlue">
-          로그아웃
+          <button
+            className="text-inherit underline font-bold"
+            onClick={handleClickLogout}
+          >
+            로그아웃
+          </button>
         </li>
       </ul>
     </nav>
