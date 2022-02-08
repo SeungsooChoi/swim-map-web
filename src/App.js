@@ -14,6 +14,8 @@ import PrivateRoute from './components/PrivateRoute';
 import Admin from './screens/Admin';
 import Dashboard from './screens/admin/Dashboard';
 import List from './screens/admin/List';
+import PoolManagement from './screens/admin/PoolManagement';
+import UserManagement from './screens/admin/UserManagement';
 
 function App() {
   const { data, loading } = useSwimPools();
@@ -52,6 +54,8 @@ function App() {
           >
             <Route path={routes.dashboard} element={<Dashboard />} />
             <Route path={routes.list} element={<List />} />
+            <Route path={routes.poolManagement} element={<PoolManagement />} />
+            <Route path={routes.userManagement} element={<UserManagement />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

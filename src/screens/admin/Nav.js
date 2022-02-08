@@ -22,12 +22,12 @@ const Nav = () => {
         </li>
         {/* 유저가 장소 등록한 내역을 보여줌 */}
         <li className="mt-8 underline font-bold text-blueSapphire cursor-pointer hover:text-skyBlue">
-          등록 관리
+          <Link to={routes.poolManagement}>등록 관리</Link>
         </li>
 
         {/* 회원 관리 (처리할 내용은 미정) */}
         <li className="mt-8 underline font-bold text-blueSapphire cursor-pointer hover:text-skyBlue">
-          회원 관리
+          <Link to={routes.userManagement}>회원 관리</Link>
         </li>
         <li className="mt-8 underline font-bold text-blueSapphire cursor-pointer hover:text-skyBlue">
           로그아웃
