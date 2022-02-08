@@ -24,9 +24,9 @@
 
 ![search](https://user-images.githubusercontent.com/34928445/151296040-3b22cbff-3382-4d0e-91d7-e01b57a9553d.gif)
 
-<!-- ## 장소 등록(로그인 필요)
+## 장소 등록(로그인 필요)
 
-진행중 -->
+진행중
 
 ## 컴포넌트 구조
 
@@ -34,13 +34,16 @@
 
 - App
   - Home
-    - NavigationBar
-    - PoolList
-    - PoolListItem
-    - MapView
   - Login
   - SignUp
   - NotFound
+  - Register
+  - Admin
+    - Nav
+    - Dashboard
+    - List
+    - PoolManagement
+    - UserManagement
 
 ## Todo
 
@@ -50,5 +53,5 @@
 - [x] 검색기능 (자동완성 선택시 해당 마커로 지도 이동, 정보 창 오픈)
 - [x] 로그인 구현
 - [x] 회원가입 구현
+- [ ] 관리자 페이지 구현 (장소등록과 같이 진행중)
 - [ ] 장소등록 구현
-- [ ] 관리자 페이지 구현(따로 레포지토리 사용 예정)
