@@ -26,6 +26,7 @@ const SELECT_QUERY = gql`
       lotNoAddr
       roadNmAddr
       remarks
+      registeredUser
       updatedAt
     }
   }

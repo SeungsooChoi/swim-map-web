@@ -97,6 +97,9 @@ const Table = ({ swimpool }) => {
               {item.remarks}
             </td>
             <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
+              {item.registeredUser}
+            </td>
+            <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
               {formatDate(Number(item.updatedAt))}
             </td>
           </tr>
