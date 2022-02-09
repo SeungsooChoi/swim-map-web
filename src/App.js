@@ -12,10 +12,10 @@ import Register from './screens/Register';
 import { setSwimPool } from './modules/swimPool';
 import PrivateRoute from './components/PrivateRoute';
 import Admin from './screens/Admin';
-import Dashboard from './screens/admin/Dashboard';
-import List from './screens/admin/List';
-import PoolManagement from './screens/admin/PoolManagement';
-import UserManagement from './screens/admin/UserManagement';
+import Dashboard from './components/admin/Dashboard';
+import List from './components/admin/List';
+import PoolManagement from './components/admin/PoolManagement';
+import UserManagement from './components/admin/UserManagement';
 
 function App() {
   const { data, loading } = useSwimPools();
