@@ -6,14 +6,17 @@ import { mainColor } from '../styles';
 import { getMatchedIndex } from '../lib/util';
 import { openInfoWindow } from '../lib/mapApi';
 
-const SearchInput = ({ results, searchValue, onChange, handleClickResult }) => {
+const SearchInput = ({
+  results,
+  searchValue,
+  onChange,
+  swimpool,
+  handleClickResult,
+}) => {
   const { map } = useSelector(state => ({ map: state.map.map }));
   const { marker } = useSelector(state => ({ marker: state.map.marker }));
   const { infoWindow } = useSelector(state => ({
     infoWindow: state.map.infoWindow,
-  }));
-  const { swimpool } = useSelector(state => ({
-    swimpool: state.swimPool.swimPool,
   }));
 
   const onClick = e => {

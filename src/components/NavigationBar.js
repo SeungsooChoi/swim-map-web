@@ -7,6 +7,7 @@ import ModalPopup from './modal/ModalPopup';
 import routes from '../routes';
 import SearchInput from './SearchInput';
 import { useSelector } from 'react-redux';
+import { getIsShowFilteredArr } from '../lib/util';
 
 const NavigationBar = () => {
   const isLoggedIn = useReactiveVar(isLoggedUser);
@@ -44,7 +45,7 @@ const NavigationBar = () => {
   };
 
   const onSearch = text => {
-    const dataArr = [...swimpool];
+    const dataArr = [...getIsShowFilteredArr(swimpool)];
 
     let result = dataArr.filter(pool => matchName(pool.name, text) === true);
     setResults(result);
@@ -73,6 +74,7 @@ const NavigationBar = () => {
         results={results}
         searchValue={searchValue}
         onChange={onChange}
+        swimpool={getIsShowFilteredArr(swimpool)}
         handleClickResult={handleClickResult}
       />
       <>

@@ -38,3 +38,9 @@ export const getMatchedIndex = (poolList, currentId) => {
   }
   return -1;
 };
+
+/**
+ * isShow가 true인 수영장 리스트만 반환
+ */
+export const getIsShowFilteredArr = swimPool =>
+  swimPool.filter(item => item.isShow === true);

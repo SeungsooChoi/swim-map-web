@@ -27,6 +27,7 @@ const SELECT_QUERY = gql`
       roadNmAddr
       remarks
       registeredUser
+      isShow
       updatedAt
     }
   }
