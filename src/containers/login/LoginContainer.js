@@ -1,7 +1,9 @@
 import { gql, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { userLogIn } from '../../apollo';
+import Form from '../../components/common/Form';
+import Logo from '../../components/common/Logo';
 import Input from '../../components/Input';
 import AuthLayout from '../../components/user/AuthLayout';
 import BottomBox from '../../components/user/BottomBox';
@@ -61,10 +63,8 @@ const LoginContainer = () => {
   return (
     <>
       <AuthLayout>
-        <Link to={routes.home}>
-          <h1 className="text-7xl text-cgBlue font-semibold">Swim</h1>
-        </Link>
-        <form onSubmit={onSubmit} className="mt-10 w-full">
+        <Logo />
+        <Form onSubmit={onSubmit}>
           <Input
             text="이메일"
             type="email"
@@ -84,7 +84,7 @@ const LoginContainer = () => {
           />
           <Button type="submit">로그인</Button>
           {errors}
-        </form>
+        </Form>
 
         <Separator />
         <BottomBox

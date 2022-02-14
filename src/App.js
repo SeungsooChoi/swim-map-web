@@ -21,8 +21,8 @@ function App() {
       <Routes>
         <Route path={routes.home} exact element={<Home />} />
         <Route path={routes.login} element={<Login />} />
-        {/* <Route path={routes.signUp} element={<Signup />} />
-          <Route path={routes.register} element={<Register />} /> */}
+        <Route path={routes.signUp} element={<Signup />} />
+        {/* <Route path={routes.register} element={<Register />} /> */}
         {/* 중첩 라우팅 */}
         {/* <Route
             path={routes.admin}
