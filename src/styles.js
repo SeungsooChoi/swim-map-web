@@ -12,9 +12,23 @@ export const elementSize = {
 
 export const GlobalStyles = createGlobalStyle`
   ${reset}
-  html, body {
-    margin: 0;
-    padding: 0;
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    font-family: 'Noto Sans KR', sans-serif;
+    height: 100vh;
+  }
+  body {
+    height: 100%;
+    background: rgba(241, 243, 245, 0.5);
+  }
+  input {
+    all: unset;
+    width: 100%;
+  }
+  #root {
+    min-height: 100%;
   }
 `;

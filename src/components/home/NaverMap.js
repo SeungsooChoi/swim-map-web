@@ -1,6 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
 import { setMap } from '../../modules/map';
+
+const Map = styled.div`
+  width: 40rem;
+  height: 100%;
+  min-height: 47rem;
+  margin-left: 3rem;
+`;
 
 const { naver } = window;
 
@@ -29,7 +37,7 @@ const NaverMap = () => {
     dispatch(setMap(map), [map]);
   }, [dispatch]);
 
-  return <div id="map" className="map w-full h-full"></div>;
+  return <Map id="map"></Map>;
 };
 
 export default NaverMap;

@@ -5,7 +5,7 @@ import { isLoggedUser } from '../apollo';
 import { Link, useNavigate } from 'react-router-dom';
 import ModalPopup from './modal/ModalPopup';
 import routes from '../routes';
-import SearchInput from './SearchInput';
+import SearchInput from './home/SearchInput';
 import { useSelector } from 'react-redux';
 import { getIsShowFilteredArr } from '../lib/util';
 

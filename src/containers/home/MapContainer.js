@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { moveToMapCoords, updateMarkers } from '../lib/mapApi';
-import useGeolocation from '../hooks/useGeolocation';
-import { formatDate } from '../lib/util';
-import { setInfoWindow, setMarker } from '../modules/map';
-import NaverMap from './naverMap/NaverMap';
+import { moveToMapCoords, updateMarkers } from '../../lib/mapApi';
+import useGeolocation from '../../hooks/useGeolocation';
+import { formatDate } from '../../lib/util';
+import { setInfoWindow, setMarker } from '../../modules/map';
+import NaverMap from '../../components/home/NaverMap';
+import './mapContainer.scss';
 
 /**
  * InfoWindow String 리턴
@@ -12,19 +13,18 @@ import NaverMap from './naverMap/NaverMap';
  * @returns
  */
 const createInfoWindow = pool => {
-  return `<div class="flex flex-col p-4 rounded-lg w-80 text-sm bg-white shadow-2xl shadow-cgBlue/50 border border-solid border-midNightGreen">
-            <span>${pool.sigunguName}</span>
-            <h1 class="mt-3 text-base">
+  return `<div class="mapInfoWindow">
+            <h1>
               ${pool.name} (${pool.inOutDoorDivName})
             </h1>
             ${
               pool.roadNmAddr
-                ? `<span>${pool.roadNmAddr}</span>`
+                ? `<span class="address">${pool.roadNmAddr}</span>`
                 : pool.lotNoAddr
-                ? `<span>${pool.lotNoAddr}</span>`
-                : `<span>등록된 주소 정보가 없습니다.</span>`
+                ? `<span class="address">${pool.lotNoAddr}</span>`
+                : `<span class="address">등록된 주소 정보가 없습니다.</span>`
             }
-            <p class="my-2">
+            <p class="info">
               ${
                 pool.regPoolLaneCnt > 0
                   ? `<span>${pool.regPoolLength}m 레인 : ${pool.regPoolLaneCnt}개</span>`
@@ -37,13 +37,13 @@ const createInfoWindow = pool => {
                   : ''
               }
             </p>
-            <div class="text-xs text-right">업데이트 날짜 :${formatDate(
+            <div class="updateText">업데이트 날짜 :${formatDate(
               Number(pool.updatedAt),
             )}</div>
           </div>`;
 };
 
-const Map = () => {
+const MapContainer = () => {
   const { map } = useSelector(state => ({ map: state.map.map }));
   const { swimpool } = useSelector(state => ({
     swimpool: state.swimPool.swimPool,
@@ -67,7 +67,6 @@ const Map = () => {
     };
 
     const paintMarker = () => {
-      // 1. marker : [], infoWindow : [] 필요함.
       const swimArr = [...swimpool];
 
       swimArr.forEach(pool => {
@@ -126,4 +125,4 @@ const Map = () => {
   return <NaverMap />;
 };
 
-export default Map;
+export default MapContainer;
