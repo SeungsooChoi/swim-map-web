@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import routes from '../../routes';
-import Input from '../Input';
+import Input from '../common/Input';
 import RadioButton from '../RadioButton';
 import BottomBox from '../user/BottomBox';
 import Button from '../user/Button';

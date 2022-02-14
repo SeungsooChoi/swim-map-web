@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { userLogIn } from '../../apollo';
 import Form from '../../components/common/Form';
 import Logo from '../../components/common/Logo';
-import Input from '../../components/Input';
+import Input from '../../components/common/Input';
 import AuthLayout from '../../components/user/AuthLayout';
 import BottomBox from '../../components/user/BottomBox';
 import Button from '../../components/user/Button';

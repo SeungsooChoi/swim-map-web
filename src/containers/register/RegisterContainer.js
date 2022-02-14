@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Logo from '../../components/common/Logo';
-import Input from '../../components/Input';
+import Input from '../../components/common/Input';
 import RadioButton from '../../components/RadioButton';
 import RegisterBlock from '../../components/register/RegisterBlock';
 import BottomBox from '../../components/user/BottomBox';
