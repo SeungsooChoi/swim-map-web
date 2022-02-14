@@ -1,6 +1,8 @@
+import { useReactiveVar } from '@apollo/client';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { isLoggedUser } from '../../apollo';
 import routes from '../../routes';
 import ModalPopup from '../modal/ModalPopup';
 
@@ -10,17 +12,18 @@ const SButton = styled.button`
   cursor: pointer;
 `;
 
-const RegisterBlock = () => {
+const RegisterButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const isLoggedIn = useReactiveVar(isLoggedUser);
 
   // 장소등록 버튼 클릭이벤트
   const onClick = () => {
-    // if (!isLoggedIn) {
-    //   setIsOpen(true);
-    //   return;
-    // }
-    // navigate(routes.register);
+    if (!isLoggedIn) {
+      setIsOpen(true);
+      return;
+    }
+    navigate(routes.register);
   };
 
   // 로그인 팝업 닫는이벤트
@@ -47,4 +50,4 @@ const RegisterBlock = () => {
   );
 };
 
-export default RegisterBlock;
+export default RegisterButton;

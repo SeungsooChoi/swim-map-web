@@ -16,6 +16,12 @@ const SearchInputBlock = styled.div`
   background: #fff;
   border: 1px solid #dddddd;
   border-radius: 12rem;
+
+  input {
+    all: unset;
+    width: 100%;
+    cursor: text;
+  }
 `;
 
 const SearchList = styled.ul`

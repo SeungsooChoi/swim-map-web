@@ -24,11 +24,12 @@ export const GlobalStyles = createGlobalStyle`
     height: 100%;
     background: rgba(241, 243, 245, 0.5);
   }
-  input {
-    all: unset;
-    width: 100%;
-  }
   #root {
     min-height: 100%;
+  }
+
+  .isRequired {
+    margin-left: 0.25rem /* 4px */;
+    color: #f03e3e;
   }
 `;

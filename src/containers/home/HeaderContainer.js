@@ -5,7 +5,7 @@ import HeaderTemplate from '../../components/home/HeaderTemplate';
 import Logo from '../../components/common/Logo';
 import SearchInput from '../../components/home/SearchInput';
 import UserProfile from '../../components/home/UserProfile';
-import RegisterBlock from '../../components/home/RegisterBlock';
+import RegisterButton from '../../components/home/RegisterButton';
 
 const HeaderContainer = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -64,7 +64,7 @@ const HeaderContainer = () => {
       {/* 이 아래를 새로운 컴포넌트로..? */}
       <>
         <UserProfile />
-        <RegisterBlock />
+        <RegisterButton />
       </>
     </HeaderTemplate>
   );

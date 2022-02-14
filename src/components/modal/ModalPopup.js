@@ -1,5 +1,58 @@
 import React from 'react';
 import Modal from 'react-modal';
+import styled from 'styled-components';
+
+const ModalWrapper = styled.div`
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title {
+    font-size: 1.5rem /* 24px */;
+    line-height: 2rem /* 32px */;
+  }
+
+  .content {
+    margin-top: 2rem /* 32px */;
+    font-size: 1.5rem /* 24px */;
+    line-height: 2rem /* 32px */;
+  }
+
+  .buttonWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2rem;
+    width: 100%;
+
+    button {
+      all: unset;
+      display: block;
+      margin: 0.25rem auto 0 auto;
+      padding: 0.5rem;
+      width: 8rem /* 128px */;
+      border-radius: 0.75rem /* 12px */;
+      cursor: pointer;
+      text-align: center;
+      background: #74c0fc;
+      color: white;
+      box-sizing: border-box;
+
+      :hover {
+        background: #4dabf7;
+      }
+    }
+
+    button.no {
+      background: #ced4da;
+
+      :hover {
+        background: #adb5bd;
+      }
+    }
+  }
+`;
 
 Modal.setAppElement('#root');
 
@@ -36,24 +89,16 @@ const ModalPopup = ({
       onRequestClose={onRequestClose}
       style={styles}
     >
-      <div className="my-auto flex flex-col items-center">
-        <h1 className="text-2xl">{title}</h1>
-        <p className="mt-8 text-2xl">{content}</p>
-        <div className="flex flex-row justify-between mt-8 w-full">
-          <button
-            className="block mt-1 mx-auto p-2 w-32  bg-blueSapphire/70 text-white rounded-xl hover:bg-cgBlue"
-            onClick={() => handleClickOk()}
-          >
-            예
-          </button>
-          <button
-            className="block mt-1 mx-auto p-2 w-32  bg-blueSapphire/70 text-white rounded-xl hover:bg-cgBlue"
-            onClick={() => close()}
-          >
+      <ModalWrapper>
+        <h1 className="title">{title}</h1>
+        <p className="content">{content}</p>
+        <div className="buttonWrapper">
+          <button onClick={() => handleClickOk()}>예</button>
+          <button className="no" onClick={() => close()}>
             아니오
           </button>
         </div>
-      </div>
+      </ModalWrapper>
     </Modal>
   );
 };

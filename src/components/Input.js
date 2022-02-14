@@ -12,6 +12,7 @@ const Label = styled.label`
   }
 
   input {
+    all: unset;
     display: block;
     margin-top: 0.75rem /* 12px */;
     padding: 0.5rem 0.75rem;
