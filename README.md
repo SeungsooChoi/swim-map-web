@@ -18,15 +18,26 @@
 
 ## 장소 안내
 
-![info](https://user-images.githubusercontent.com/34928445/151295924-d6d65dbd-e8b8-4813-9ca0-015a0788df4a.gif)
+![info](https://user-images.githubusercontent.com/34928445/153858111-c4e10724-b0fb-4199-a5f3-8755752f9c6a.gif)
 
 ## 장소 검색
 
-![search](https://user-images.githubusercontent.com/34928445/151296040-3b22cbff-3382-4d0e-91d7-e01b57a9553d.gif)
+![search](https://user-images.githubusercontent.com/34928445/153858278-a786f60b-40b7-443f-ad14-bcbebf336bfd.gif)
 
 ## 장소 등록(로그인 필요)
 
 진행중
+
+<details>
+    <summary>이전 자료</summary>
+
+<!-- summary 아래 한칸 공백 두고 내용 삽입 -->
+
+이전 디자인
+
+![info](https://user-images.githubusercontent.com/34928445/151295924-d6d65dbd-e8b8-4813-9ca0-015a0788df4a.gif)
+
+</details>
 
 ## 컴포넌트 구조
 
