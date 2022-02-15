@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { commonStyle } from '../../styles';
 
 const Label = styled.label`
   display: block;
@@ -18,8 +19,7 @@ const Label = styled.label`
     padding: 0.5rem 0.75rem;
     width: 100%;
     border: 1px solid #c4c4c4;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-      0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    box-shadow: ${commonStyle.boxShadow};
     border-radius: 0.5rem;
     box-sizing: border-box;
   }

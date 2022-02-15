@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import routes from '../../routes';
+import { commonStyle } from '../../styles';
 import Input from '../common/Input';
 import RadioButton from '../RadioButton';
 import BottomBox from '../user/BottomBox';
@@ -36,8 +37,7 @@ const Wrapper = styled.div`
         height: 41px;
         border: 1px solid #c4c4c4;
         border-radius: 0.375rem /* 6px */;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-          0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        box-shadow: ${commonStyle.boxShadow};
         cursor: pointer;
         box-sizing: border-box;
       }

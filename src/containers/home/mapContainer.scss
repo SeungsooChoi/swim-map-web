@@ -9,6 +9,22 @@
   border-radius: 0.5rem;
   border: 1px solid #adb5bd;
 
+  .title {
+    span {
+      color: white;
+      font-weight: 400;
+      margin-left: 0.5rem;
+      padding: 0 0.5rem;
+      border-radius: 0.5rem;
+    }
+    span.inDoor {
+      background: #bac8ff;
+    }
+    span.outDoor {
+      background: #b2f2bb;
+    }
+  }
+
   .address {
     margin-top: 0.75rem;
   }

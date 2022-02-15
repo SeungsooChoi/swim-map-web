@@ -2,6 +2,7 @@ import React from 'react';
 import { formatDate, getMatchedIndex } from '../../lib/util';
 import { openInfoWindow } from '../../lib/mapApi';
 import styled from 'styled-components';
+import { commonStyle } from '../../styles';
 
 const PoolListItemLi = styled.li`
   display: flex;
@@ -11,8 +12,7 @@ const PoolListItemLi = styled.li`
   padding: 1.5rem;
   background: white;
   border-radius: 0.725rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  box-shadow: ${commonStyle.boxShadow};
   min-height: 160px;
   :hover {
     cursor: pointer;
@@ -22,6 +22,20 @@ const PoolListItemLi = styled.li`
 
 const Title = styled.h1`
   font-weight: 700;
+
+  span {
+    color: white;
+    font-weight: 400;
+    margin-left: 0.5rem;
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+  }
+  span.inDoor {
+    background: #bac8ff;
+  }
+  span.outDoor {
+    background: #b2f2bb;
+  }
 `;
 
 const Text = styled.div`
@@ -54,6 +68,8 @@ const UpdateText = styled.div`
 `;
 
 const PoolListItem = ({ swimpool, map, marker, infoWindow }) => {
+  const INDOOR = 'inDoor';
+  const OUTDOOR = 'outDoor';
   const onClick = e => {
     const currentId = e.target.parentNode.parentNode.id;
     const id = getMatchedIndex(swimpool, currentId);
@@ -91,7 +107,21 @@ const PoolListItem = ({ swimpool, map, marker, infoWindow }) => {
               <div>
                 {/* <span>{pool.sigunguName}</span> */}
                 <Title>
-                  {pool.name} ({pool.inOutDoorDivName})
+                  {pool.name}
+                  {pool.inOutDoorDivName === '실내' ? (
+                    <span className={INDOOR}>{pool.inOutDoorDivName}</span>
+                  ) : pool.inOutDoorDivName === '실외' ? (
+                    <span className={OUTDOOR}>{pool.inOutDoorDivName}</span>
+                  ) : (
+                    <>
+                      <span className={INDOOR}>
+                        {pool.inOutDoorDivName.split(' ')[0]}
+                      </span>
+                      <span className={OUTDOOR}>
+                        {pool.inOutDoorDivName.split(' ')[1]}
+                      </span>
+                    </>
+                  )}
                 </Title>
                 {pool.roadNmAddr ? (
                   <Text>{pool.roadNmAddr}</Text>

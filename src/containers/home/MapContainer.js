@@ -14,8 +14,21 @@ import './mapContainer.scss';
  */
 const createInfoWindow = pool => {
   return `<div class="mapInfoWindow">
-            <h1>
-              ${pool.name} (${pool.inOutDoorDivName})
+            <h1 class="title">
+              ${pool.name} ${
+    pool.inOutDoorDivName === '실내'
+      ? `<span class="inDoor">${pool.inOutDoorDivName}</span>`
+      : pool.inOutDoorDivName === '실외'
+      ? `<span class="outDoor">${pool.inOutDoorDivName}</span>`
+      : `
+                  <span class="inDoor">
+                    ${pool.inOutDoorDivName.split(' ')[0]}
+                  </span>
+                  <span class="outDoor">
+                    ${pool.inOutDoorDivName.split(' ')[1]}
+                  </span>
+                `
+  }
             </h1>
             ${
               pool.roadNmAddr
@@ -37,7 +50,7 @@ const createInfoWindow = pool => {
                   : ''
               }
             </p>
-            <div class="updateText">업데이트 날짜 :${formatDate(
+            <div class="updateText">업데이트 날짜 : ${formatDate(
               Number(pool.updatedAt),
             )}</div>
           </div>`;

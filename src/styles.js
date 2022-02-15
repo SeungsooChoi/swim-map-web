@@ -6,8 +6,9 @@ export const mainColor = {
   lineColor: '#5cd1f5',
 };
 
-export const elementSize = {
-  navHeight: 64,
+export const commonStyle = {
+  boxShadow: `0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  0 8px 10px -6px rgba(0, 0, 0, 0.1);`,
 };
 
 export const GlobalStyles = createGlobalStyle`
