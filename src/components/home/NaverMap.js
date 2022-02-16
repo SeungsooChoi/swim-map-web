@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { setMap } from '../../modules/map';
@@ -14,6 +14,7 @@ const { naver } = window;
 
 const NaverMap = () => {
   const dispatch = useDispatch();
+  const mapDiv = useRef();
 
   useEffect(() => {
     const options = {
@@ -31,13 +32,12 @@ const NaverMap = () => {
       minZoom: 6,
       zoom: 13,
     };
-    const container = document.getElementById('map');
-    const map = new naver.maps.Map(container, options);
+    const map = new naver.maps.Map(mapDiv.current, options);
 
     dispatch(setMap(map), [map]);
   }, [dispatch]);
 
-  return <Map id="map"></Map>;
+  return <Map ref={mapDiv}></Map>;
 };
 
 export default NaverMap;
