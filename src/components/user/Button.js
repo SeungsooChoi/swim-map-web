@@ -21,4 +21,4 @@ const Button = props => {
   return <SButton {...props}></SButton>;
 };
 
-export default Button;
+export default React.memo(Button);

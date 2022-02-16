@@ -45,4 +45,4 @@ const Input = ({ text, required, ...rest }) => {
   );
 };
 
-export default Input;
+export default React.memo(Input);

@@ -27,4 +27,4 @@ const BottomBox = ({ cta, link, linkText }) => {
   );
 };
 
-export default BottomBox;
+export default React.memo(BottomBox);

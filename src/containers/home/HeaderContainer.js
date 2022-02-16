@@ -25,15 +25,14 @@ const HeaderContainer = () => {
     }
   };
 
-  const onSearch = text => {
-    const dataArr = [...getIsShowFilteredArr(swimpool)];
-
-    let result = dataArr.filter(pool => matchName(pool.name, text) === true);
-    setResults(result);
-  };
-
   // searchInput에 넘겨줄 onChange 함수
   const onChange = e => {
+    const onSearch = text => {
+      const dataArr = [...getIsShowFilteredArr(swimpool)];
+
+      let result = dataArr.filter(pool => matchName(pool.name, text) === true);
+      setResults(result);
+    };
     const { value } = e.target;
     setSearchValue(value);
     onSearch(value);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { getMatchedIndex } from '../../lib/util';
@@ -57,16 +57,19 @@ const SearchInput = ({
   infoWindow,
 }) => {
   // 검색 리스트 클릭이벤트
-  const onClick = e => {
-    const currentId = e.target.id;
-    const currentText = e.target.innerHTML;
-    handleClickResult(currentText);
-    const matchedId = getMatchedIndex(swimpool, currentId);
+  const onClick = useCallback(
+    e => {
+      const currentId = e.target.id;
+      const currentText = e.target.innerHTML;
+      handleClickResult(currentText);
+      const matchedId = getMatchedIndex(swimpool, currentId);
 
-    if (matchedId !== -1) {
-      openInfoWindow(map, marker, matchedId, infoWindow);
-    }
-  };
+      if (matchedId !== -1) {
+        openInfoWindow(map, marker, matchedId, infoWindow);
+      }
+    },
+    [handleClickResult, map, marker, infoWindow, swimpool],
+  );
 
   return (
     <SearchInputBlock>
@@ -92,4 +95,4 @@ const SearchInput = ({
   );
 };
 
-export default SearchInput;
+export default React.memo(SearchInput);
