@@ -30,7 +30,7 @@ const NaverMap = () => {
         position: naver.maps.Position.TOP_RIGHT,
       },
       minZoom: 6,
-      zoom: 13,
+      zoom: 12,
     };
     const map = new naver.maps.Map(mapDiv.current, options);
 
