@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { sigungu } from '../../lib/sigunguCode';
 import { commonStyle } from '../../styles';
 
 const Container = styled.div`
@@ -30,7 +29,7 @@ const Container = styled.div`
     list-style: none;
     padding: 0;
     margin: 0;
-    height: 14rem;
+    max-height: 14rem;
     overflow-y: scroll;
     border: 1px solid #495057;
     border-radius: 0.3rem;
@@ -46,6 +45,10 @@ const Container = styled.div`
       background: #f1f3f5;
     }
   }
+
+  & + & {
+    margin-left: 1rem;
+  }
 `;
 
 const Button = styled.button`
@@ -56,30 +59,23 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Dropdown = ({ handleClickSido }) => {
+const Dropdown = ({ text, children }) => {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const onClick = () => setIsActive(!isActive);
-  const sidoNameArr = sigungu.map(item => Object.keys(item));
 
   return (
     <Container>
       <Button onClick={onClick}>
         <span>
-          시군구 {isActive ? <span>&uarr;</span> : <span>&darr;</span>}
+          {text} {isActive ? <span>&uarr;</span> : <span>&darr;</span>}
         </span>
       </Button>
       <nav
         className={`menu ${isActive ? 'active' : 'inactive'}`}
         ref={dropdownRef}
       >
-        <ul>
-          {sidoNameArr.map((item, i) => (
-            <li key={i} onClick={() => handleClickSido(item)}>
-              {item}
-            </li>
-          ))}
-        </ul>
+        {children}
       </nav>
     </Container>
   );
