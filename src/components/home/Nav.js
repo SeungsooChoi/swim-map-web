@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { sigungu } from '../../lib/sigunguCode';
+import { sidoData } from '../../lib/sidoData';
 import Dropdown from '../common/Dropdown';
 
 const NavBlock = styled.div`
@@ -30,15 +30,17 @@ const SelectedItem = styled.ul`
 const Nav = () => {
   const [selectedSido, setSelectedSido] = useState([]);
   const [selectedLane, setSelectedLane] = useState([]);
-  const sidoNameArr = sigungu.map(item => Object.keys(item));
+  const sidoNameArr = sidoData.map(item => Object.keys(item));
   const lane = ['50m', '25m', '기타'];
 
+  // 시/도명 드롭다운내의 아이템 클릭이벤트
   const handleClickSido = text => {
     const currentSido = [...selectedSido, text];
     setSelectedSido(currentSido);
   };
 
-  const handleClickSidoItem = text => {
+  // 클릭한 시/도명 제거 클릭이벤트
+  const handleClickRemoveSelectedSidoItem = text => {
     const targetIndex = selectedSido.indexOf(text);
     const sidoArr = [...selectedSido];
     // 선택한 요소 삭제.
@@ -46,12 +48,14 @@ const Nav = () => {
     setSelectedSido(sidoArr);
   };
 
+  // 레인 드롭다운내의 아이템 클릭이벤트
   const handleClickLane = text => {
     const currentLane = [...selectedLane, text];
     setSelectedLane(currentLane);
   };
 
-  const handleClickLaneItem = text => {
+  // 클릭한 레인 제거 클릭이벤트
+  const handleClickRemoveSelectedLaneItem = text => {
     const targetIndex = selectedLane.indexOf(text);
     const laneArr = [...selectedLane];
     // 선택한 요소 삭제.
@@ -61,7 +65,7 @@ const Nav = () => {
 
   return (
     <NavBlock>
-      <Dropdown text="시군구">
+      <Dropdown text="시/도명">
         <ul>
           {sidoNameArr.map((item, i) => (
             <li key={i} onClick={() => handleClickSido(item)}>
@@ -81,13 +85,13 @@ const Nav = () => {
       </Dropdown>
       <SelectedItem>
         {selectedSido.map((item, i) => (
-          <li key={i} onClick={() => handleClickSidoItem(item)}>
+          <li key={i} onClick={() => handleClickRemoveSelectedSidoItem(item)}>
             {item} <span>X</span>
           </li>
         ))}
 
         {selectedLane.map((item, i) => (
-          <li key={i} onClick={() => handleClickLaneItem(item)}>
+          <li key={i} onClick={() => handleClickRemoveSelectedLaneItem(item)}>
             {item} <span>X</span>
           </li>
         ))}

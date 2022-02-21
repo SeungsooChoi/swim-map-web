@@ -1,4 +1,4 @@
-export const sigungu = [
+export const sidoData = [
   {
     서울시: {
       code: 11,
