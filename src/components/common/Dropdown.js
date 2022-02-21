@@ -46,6 +46,11 @@ const Container = styled.div`
     }
   }
 
+  .menu li.clicked {
+    font-weight: 700;
+    color: #4263eb;
+  }
+
   & + & {
     margin-left: 1rem;
   }

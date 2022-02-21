@@ -28,48 +28,61 @@ const SelectedItem = styled.ul`
 `;
 
 const Nav = () => {
-  const [selectedSido, setSelectedSido] = useState([]);
-  const [selectedLane, setSelectedLane] = useState([]);
-  const sidoNameArr = sidoData.map(item => Object.keys(item));
-  const lane = ['50m', '25m', '기타'];
+  const [sido, setSido] = useState(
+    sidoData.map(item => {
+      return {
+        name: item.name,
+        clicked: false,
+      };
+    }),
+  );
+  const [lane, setLane] = useState([
+    { name: '50m', clicked: false },
+    { name: '25m', clicked: false },
+    { name: '기타', clicked: false },
+  ]);
+
+  const getChangedArr = (arr, item) => {
+    let newArr = [...arr];
+    newArr.forEach(data => {
+      if (data.name === item.name) {
+        data.clicked = !item.clicked;
+      }
+    });
+    return newArr;
+  };
 
   // 시/도명 드롭다운내의 아이템 클릭이벤트
-  const handleClickSido = text => {
-    const currentSido = [...selectedSido, text];
-    setSelectedSido(currentSido);
+  const handleClickSido = item => {
+    setSido(getChangedArr(sido, item));
   };
 
   // 클릭한 시/도명 제거 클릭이벤트
-  const handleClickRemoveSelectedSidoItem = text => {
-    const targetIndex = selectedSido.indexOf(text);
-    const sidoArr = [...selectedSido];
-    // 선택한 요소 삭제.
-    sidoArr.splice(targetIndex, 1);
-    setSelectedSido(sidoArr);
+  const handleClickRemoveSelectedSidoItem = item => {
+    setSido(getChangedArr(sido, item));
   };
 
   // 레인 드롭다운내의 아이템 클릭이벤트
-  const handleClickLane = text => {
-    const currentLane = [...selectedLane, text];
-    setSelectedLane(currentLane);
+  const handleClickLane = item => {
+    setLane(getChangedArr(lane, item));
   };
 
   // 클릭한 레인 제거 클릭이벤트
-  const handleClickRemoveSelectedLaneItem = text => {
-    const targetIndex = selectedLane.indexOf(text);
-    const laneArr = [...selectedLane];
-    // 선택한 요소 삭제.
-    laneArr.splice(targetIndex, 1);
-    setSelectedLane(laneArr);
+  const handleClickSelectedLaneItem = item => {
+    setLane(getChangedArr(lane, item));
   };
 
   return (
     <NavBlock>
       <Dropdown text="시/도명">
         <ul>
-          {sidoNameArr.map((item, i) => (
-            <li key={i} onClick={() => handleClickSido(item)}>
-              {item}
+          {sido.map((item, i) => (
+            <li
+              key={i}
+              className={`${item.clicked ? 'clicked' : 'notclicked'}`}
+              onClick={() => handleClickSido(item)}
+            >
+              {item.name}
             </li>
           ))}
         </ul>
@@ -77,24 +90,33 @@ const Nav = () => {
       <Dropdown text="레인">
         <ul>
           {lane.map((item, i) => (
-            <li key={i} onClick={() => handleClickLane(item)}>
-              {item}
+            <li
+              key={i}
+              className={`${item.clicked ? 'clicked' : 'notclicked'}`}
+              onClick={() => handleClickLane(item)}
+            >
+              {item.name}
             </li>
           ))}
         </ul>
       </Dropdown>
       <SelectedItem>
-        {selectedSido.map((item, i) => (
-          <li key={i} onClick={() => handleClickRemoveSelectedSidoItem(item)}>
-            {item} <span>X</span>
-          </li>
-        ))}
-
-        {selectedLane.map((item, i) => (
-          <li key={i} onClick={() => handleClickRemoveSelectedLaneItem(item)}>
-            {item} <span>X</span>
-          </li>
-        ))}
+        {/* 시/도 */}
+        {sido.map((item, i) =>
+          item.clicked ? (
+            <li key={i} onClick={() => handleClickRemoveSelectedSidoItem(item)}>
+              {item.name} <span>X</span>
+            </li>
+          ) : null,
+        )}
+        {/* 레인 */}
+        {lane.map((item, i) =>
+          item.clicked ? (
+            <li key={i} onClick={() => handleClickSelectedLaneItem(item)}>
+              {item.name} <span>X</span>
+            </li>
+          ) : null,
+        )}
       </SelectedItem>
     </NavBlock>
   );
