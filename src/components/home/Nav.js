@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { sidoData } from '../../lib/sidoData';
 import Dropdown from '../common/Dropdown';
 
 const NavBlock = styled.div`
@@ -27,51 +26,14 @@ const SelectedItem = styled.ul`
   }
 `;
 
-const Nav = () => {
-  const [sido, setSido] = useState(
-    sidoData.map(item => {
-      return {
-        name: item.name,
-        clicked: false,
-      };
-    }),
-  );
-  const [lane, setLane] = useState([
-    { name: '50m', clicked: false },
-    { name: '25m', clicked: false },
-    { name: '기타', clicked: false },
-  ]);
-
-  const getChangedArr = (arr, item) => {
-    let newArr = [...arr];
-    newArr.forEach(data => {
-      if (data.name === item.name) {
-        data.clicked = !item.clicked;
-      }
-    });
-    return newArr;
-  };
-
-  // 시/도명 드롭다운내의 아이템 클릭이벤트
-  const handleClickSido = item => {
-    setSido(getChangedArr(sido, item));
-  };
-
-  // 클릭한 시/도명 제거 클릭이벤트
-  const handleClickRemoveSelectedSidoItem = item => {
-    setSido(getChangedArr(sido, item));
-  };
-
-  // 레인 드롭다운내의 아이템 클릭이벤트
-  const handleClickLane = item => {
-    setLane(getChangedArr(lane, item));
-  };
-
-  // 클릭한 레인 제거 클릭이벤트
-  const handleClickSelectedLaneItem = item => {
-    setLane(getChangedArr(lane, item));
-  };
-
+const Nav = ({
+  sido,
+  lane,
+  handleClickSido,
+  handleClickRemoveSelectedSidoItem,
+  handleClickLane,
+  handleClickSelectedLaneItem,
+}) => {
   return (
     <NavBlock>
       <Dropdown text="시/도명">
