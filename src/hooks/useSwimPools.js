@@ -5,6 +5,7 @@ const SELECT_QUERY = gql`
     swimPools {
       id
       sigunguName
+      sigunguCode
       name
       inOutDoorDivName
       manageMainName
