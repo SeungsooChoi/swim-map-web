@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { getIsShowFilteredArr } from '../../lib/util';
-import PoolListItem from './PoolListItem';
+import PoolListBlock from './PoolListBlock';
 
-const PoolListBlock = styled.div`
+const Wrapper = styled.div`
   padding-right: 1rem;
   width: 52%;
   max-height: 752px;
@@ -12,11 +12,9 @@ const PoolListBlock = styled.div`
 
 const PoolList = ({ swimpool, ...rest }) => {
   return (
-    <PoolListBlock>
-      <ul>
-        <PoolListItem swimpool={getIsShowFilteredArr(swimpool)} {...rest} />
-      </ul>
-    </PoolListBlock>
+    <Wrapper>
+      <PoolListBlock swimpool={getIsShowFilteredArr(swimpool)} {...rest} />
+    </Wrapper>
   );
 };
 
