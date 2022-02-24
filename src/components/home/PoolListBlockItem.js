@@ -65,11 +65,11 @@ const UpdateText = styled.div`
   font-weight: 300;
 `;
 
-const PoolListBlockItem = ({ pool, onClick, onClickBackground }) => {
+const PoolListBlockItem = ({ id, pool, onClick, onClickBackground }) => {
   const INDOOR = 'inDoor';
   const OUTDOOR = 'outDoor';
   return (
-    <PoolListItemLi onClick={onClickBackground}>
+    <PoolListItemLi id={id} onClick={onClickBackground}>
       <div>
         {/* <span>{pool.sigunguName}</span> */}
         <Title>

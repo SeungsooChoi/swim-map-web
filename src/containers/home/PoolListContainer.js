@@ -17,12 +17,16 @@ const PoolListContainer = () => {
   const { sido } = useSelector(state => ({
     sido: state.filter.sido,
   }));
+  const { lane } = useSelector(state => ({
+    lane: state.filter.lane,
+  }));
 
   // sido에서 선택된 시의 list만 가져와서 값을 array로 전달.
   // PoolListItem에서 해당 array의 시군구 코드에 해당하는 값만 보여주게 하면 될듯.
   let filteredSido = [];
   let filteredLane = [];
   const getClickedSidoLane = () => {
+    // 시/도
     const clickedSido = sido
       .filter(selectedItem => selectedItem.clicked === true)
       .map(item => item.name);
@@ -34,6 +38,11 @@ const PoolListContainer = () => {
     sidoCodeList.forEach(item => {
       filteredSido = filteredSido.concat(Object.values(item.list));
     });
+
+    // 레인
+    filteredLane = lane
+      .filter(selectedLane => selectedLane.clicked === true)
+      .map(item => item.name);
   };
 
   getClickedSidoLane();

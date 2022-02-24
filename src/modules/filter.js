@@ -7,8 +7,8 @@ const initialState = {
     clicked: false,
   })),
   lane: [
-    { name: '50m', clicked: false },
-    { name: '25m', clicked: false },
+    { name: '50', clicked: false },
+    { name: '25', clicked: false },
     { name: '기타', clicked: false },
   ],
 };
