@@ -31,10 +31,10 @@ const Title = styled.h1`
     border-radius: 0.5rem;
   }
   span.inDoor {
-    background: #bac8ff;
+    background: #868e96;
   }
   span.outDoor {
-    background: #b2f2bb;
+    background: #868e96;
   }
 `;
 
@@ -55,11 +55,10 @@ const SButton = styled.button`
   width: 10rem;
   height: 2rem;
   text-align: center;
-  background: #a5d8ff;
-  color: white;
+  border: 1px solid black;
   border-radius: 0.5rem;
   :hover {
-    background: #74c0fc;
+    background: #ced4da;
   }
 `;
 
