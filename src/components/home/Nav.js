@@ -29,10 +29,10 @@ const SelectedItem = styled.ul`
 const Nav = ({
   sido,
   lane,
-  handleClickSido,
-  handleClickRemoveSelectedSidoItem,
-  handleClickLane,
-  handleClickSelectedLaneItem,
+  onClickSidoDropdown,
+  onClickLaneDropdown,
+  onClickRemoveSidoFilter,
+  onClickRemoveLaneFilter,
 }) => {
   return (
     <NavBlock>
@@ -42,7 +42,7 @@ const Nav = ({
             <li
               key={i}
               className={`${item.clicked ? 'clicked' : 'notclicked'}`}
-              onClick={() => handleClickSido(item)}
+              onClick={() => onClickSidoDropdown(item)}
             >
               {item.name}
             </li>
@@ -55,7 +55,7 @@ const Nav = ({
             <li
               key={i}
               className={`${item.clicked ? 'clicked' : 'notclicked'}`}
-              onClick={() => handleClickLane(item)}
+              onClick={() => onClickLaneDropdown(item)}
             >
               {item.name}
             </li>
@@ -66,7 +66,7 @@ const Nav = ({
         {/* 시/도 */}
         {sido.map((item, i) =>
           item.clicked ? (
-            <li key={i} onClick={() => handleClickRemoveSelectedSidoItem(item)}>
+            <li key={i} onClick={() => onClickRemoveSidoFilter(item)}>
               {item.name} <span>X</span>
             </li>
           ) : null,
@@ -74,7 +74,7 @@ const Nav = ({
         {/* 레인 */}
         {lane.map((item, i) =>
           item.clicked ? (
-            <li key={i} onClick={() => handleClickSelectedLaneItem(item)}>
+            <li key={i} onClick={() => onClickRemoveLaneFilter(item)}>
               {item.name} <span>X</span>
             </li>
           ) : null,

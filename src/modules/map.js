@@ -1,7 +1,16 @@
+// initialState
+const initialState = {
+  map: null,
+  marker: [],
+  infoWindow: [],
+};
+
+// action type
 const SET_MAP = 'setMap';
 const SET_MARKER = 'setMarker';
 const SET_INFOWINDOW = 'setInfoWindow';
 
+// action function
 export const setMap = map => {
   return {
     type: SET_MAP,
@@ -23,14 +32,8 @@ export const setInfoWindow = infoWindow => {
   };
 };
 
-const map = (
-  state = {
-    map: null,
-    marker: [],
-    infoWindow: [],
-  },
-  action,
-) => {
+// reducer
+const map = (state = initialState, action) => {
   switch (action.type) {
     case SET_MAP:
       return {

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { sidoData } from '../../lib/sidoData';
 import MapContainer from './MapContainer';
 import NavContainer from './NavContainer';
 import PoolListContainer from './PoolListContainer';
@@ -14,30 +13,11 @@ const Main = styled.main`
 `;
 
 const MainContainer = () => {
-  const [sido, setSido] = useState(
-    sidoData.map(item => {
-      return {
-        name: item.name,
-        clicked: false,
-      };
-    }),
-  );
-  const [lane, setLane] = useState([
-    { name: '50m', clicked: false },
-    { name: '25m', clicked: false },
-    { name: '기타', clicked: false },
-  ]);
-
   return (
     <>
-      <NavContainer
-        sido={sido}
-        setSido={setSido}
-        lane={lane}
-        setLane={setLane}
-      />
+      <NavContainer />
       <Main>
-        <PoolListContainer sido={sido} lane={lane} />
+        <PoolListContainer />
         <MapContainer />
       </Main>
     </>

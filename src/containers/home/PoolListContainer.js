@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import PoolList from '../../components/home/PoolList';
 
-const PoolListContainer = ({ sido, lane }) => {
+const PoolListContainer = () => {
   const { swimpool } = useSelector(state => ({
     swimpool: state.swimPool.swimPool,
   }));
@@ -18,8 +18,6 @@ const PoolListContainer = ({ sido, lane }) => {
       map={map}
       marker={marker}
       infoWindow={infoWindow}
-      sido={sido}
-      lane={lane}
     />
   );
 };

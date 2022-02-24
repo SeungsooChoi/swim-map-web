@@ -1,5 +1,12 @@
+// initialState
+const initialState = {
+  swimPool: [],
+};
+
+// action type
 const SET_SWIMPOOL = 'setSwimPool';
 
+// action function
 export const setSwimPool = swimPool => {
   return {
     type: SET_SWIMPOOL,
@@ -7,12 +14,8 @@ export const setSwimPool = swimPool => {
   };
 };
 
-const swimPool = (
-  state = {
-    swimPool: [],
-  },
-  action,
-) => {
+// reducer
+const swimPool = (state = initialState, action) => {
   switch (action.type) {
     case SET_SWIMPOOL:
       return {
