@@ -57,7 +57,7 @@ const Nav = ({
               className={`${item.clicked ? 'clicked' : 'notclicked'}`}
               onClick={() => onClickLaneDropdown(item)}
             >
-              {item.name}
+              {item.name}(m)
             </li>
           ))}
         </ul>

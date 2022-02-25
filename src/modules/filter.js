@@ -9,7 +9,7 @@ const initialState = {
   lane: [
     { name: '50', clicked: false },
     { name: '25', clicked: false },
-    { name: '기타', clicked: false },
+    // { name: '기타', clicked: false },
   ],
 };
 
