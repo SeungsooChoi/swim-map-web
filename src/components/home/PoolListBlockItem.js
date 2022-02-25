@@ -37,6 +37,10 @@ const Title = styled.h1`
   }
 `;
 
+const Address = styled.div`
+  margin-top: 1.3rem;
+`;
+
 const Text = styled.div`
   margin-top: 0.6rem;
 `;
@@ -90,11 +94,11 @@ const PoolListBlockItem = ({ id, pool, onClick, onClickBackground }) => {
           )}
         </Title>
         {pool.roadNmAddr ? (
-          <Text>{pool.roadNmAddr}</Text>
+          <Address>{pool.roadNmAddr}</Address>
         ) : pool.lotNoAddr ? (
-          <Text>{pool.lotNoAddr}</Text>
+          <Address>{pool.lotNoAddr}</Address>
         ) : (
-          <Text>등록된 주소 정보가 없습니다.</Text>
+          <Address>등록된 주소 정보가 없습니다.</Address>
         )}
         <div>
           {pool.regPoolLaneCnt > 0 && (
