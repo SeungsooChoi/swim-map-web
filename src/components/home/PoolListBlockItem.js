@@ -30,10 +30,10 @@ const Title = styled.h1`
     border-radius: 0.5rem;
   }
   span.inDoor {
-    background: #868e96;
+    background: #495057;
   }
   span.outDoor {
-    background: #868e96;
+    background: #495057;
   }
 `;
 
@@ -123,4 +123,4 @@ const PoolListBlockItem = ({ id, pool, onClick, onClickBackground }) => {
   );
 };
 
-export default PoolListBlockItem;
+export default React.memo(PoolListBlockItem);

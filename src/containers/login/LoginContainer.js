@@ -34,7 +34,6 @@ const LoginContainer = () => {
     const {
       login: { ok, error, token },
     } = data;
-    console.log(ok, error, token);
 
     if (!ok) {
       setErrors(error);
