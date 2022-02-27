@@ -110,4 +110,4 @@ const PoolListBlock = ({
   );
 };
 
-export default PoolListBlock;
+export default React.memo(PoolListBlock);
