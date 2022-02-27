@@ -1,11 +1,5 @@
-import React, { useState } from 'react';
-import Logo from '../../components/common/Logo';
-import Input from '../../components/common/Input';
-import RadioButton from '../../components/RadioButton';
+import React from 'react';
 import RegisterBlock from '../../components/register/RegisterBlock';
-import BottomBox from '../../components/user/BottomBox';
-import Button from '../../components/user/Button';
-import routes from '../../routes';
 
 const RegisterContainer = () => {
   // Todo

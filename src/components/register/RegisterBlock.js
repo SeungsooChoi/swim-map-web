@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import routes from '../../routes';
 import { commonStyle } from '../../styles';
 import Input from '../common/Input';
-import RadioButton from '../RadioButton';
+import RadioButton from '../Checkbox';
 import BottomBox from '../user/BottomBox';
 import Button from '../user/Button';
 
@@ -70,7 +70,7 @@ const RegisterBlock = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('submit');
+    console.log('submit : create mutation 작업 해야함');
   };
 
   return (
