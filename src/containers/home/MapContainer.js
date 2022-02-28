@@ -83,20 +83,22 @@ const MapContainer = () => {
       const swimArr = [...swimpool];
 
       swimArr.forEach(pool => {
-        let newMarker = new naver.maps.Marker({
-          position: new naver.maps.LatLng(pool.latitude, pool.longitude),
-          map,
-        });
+        if (pool.isShow) {
+          let newMarker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(pool.latitude, pool.longitude),
+            map,
+          });
 
-        let infoWindow = new naver.maps.InfoWindow({
-          content: createInfoWindow(pool),
-          borderWidth: 0,
-          disableAnchor: true,
-          backgroundColor: 'transparent',
-        });
+          let infoWindow = new naver.maps.InfoWindow({
+            content: createInfoWindow(pool),
+            borderWidth: 0,
+            disableAnchor: true,
+            backgroundColor: 'transparent',
+          });
 
-        markers.push(newMarker);
-        infoWindows.push(infoWindow);
+          markers.push(newMarker);
+          infoWindows.push(infoWindow);
+        }
       });
 
       // store에 마커, 인포윈도우 등록
