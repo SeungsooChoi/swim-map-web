@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -26,27 +26,37 @@ const Wrapper = styled.div`
   }
 `;
 
-const Checkbox = ({ textArr, required }) => {
+const Checkbox = ({ checkedList, setCheckedLists, dataList, required }) => {
+  // 개별 체크 클릭 시 발생하는 함수
+  const onCheckedElement = useCallback(
+    (checked, list) => {
+      if (checked) {
+        setCheckedLists([...checkedList, list]);
+      } else {
+        setCheckedLists(checkedList.filter(el => el !== list));
+      }
+    },
+    [checkedList, setCheckedLists],
+  );
+
   return (
     <Wrapper>
       <span>수영장 레인 정보</span>
       {required ? <span className="isRequired">(필수)</span> : ''}
       <div className="content">
         <h1 className="title">레인 길이</h1>
-        {textArr.length > 0 &&
-          textArr.map((text, i) => (
-            <span key={i} className="radio-item">
-              <label htmlFor={text} className="radio-text">
-                <input
-                  type="checkbox"
-                  id={text}
-                  name="poolLength"
-                  value={text}
-                />
-                <span>{text}</span>
-              </label>
-            </span>
-          ))}
+        {dataList.map(list => (
+          <span key={list.id} className="radio-item">
+            <label htmlFor={list.data} className="radio-text">
+              <input
+                type="checkbox"
+                id={list.data}
+                onChange={e => onCheckedElement(e.target.checked, list)}
+              />
+              <span>{list.data}</span>
+            </label>
+          </span>
+        ))}
       </div>
     </Wrapper>
   );
