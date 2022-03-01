@@ -27,6 +27,7 @@ const REGISTER_MUTATION = gql`
 `;
 
 // 수영장 레인 종류
+const checksTitle = '수영장 레인 종류';
 const labels = ['50m', '25m', '기타'];
 
 const RegisterContainer = () => {
@@ -36,7 +37,7 @@ const RegisterContainer = () => {
     detailAddress: '',
   });
   const [address, setAddress] = useState('');
-  const [renderChecks, getCheckList] = useChecks(labels);
+  const [renderChecks, getCheckList] = useChecks(checksTitle, labels);
 
   const onCompleted = data => {
     console.log(data);

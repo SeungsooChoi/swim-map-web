@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Checks from '../components/common/Checks';
 
-const useChecks = labels => {
+const useChecks = (title, labels) => {
   const [checkList, setCheckList] = useState(() => labels.map(() => false));
 
   const handleCheckClick = index => {
@@ -12,7 +12,7 @@ const useChecks = labels => {
 
   const renderChecks = () => (
     <Checks
-      title={'수영장 레인 종류'}
+      title={title}
       checkList={checkList}
       labels={labels}
       onCheck={handleCheckClick}
