@@ -70,7 +70,7 @@ const Dropdown = ({
   isActive,
   dropdownRef,
   onClick,
-  handleClickDropdownItem,
+  eventHandler,
 }) => {
   return (
     <Container>
@@ -88,7 +88,9 @@ const Dropdown = ({
             <li
               key={i}
               className={`${item.clicked ? 'clicked' : 'notclicked'}`}
-              onClick={() => handleClickDropdownItem(item)}
+              onClick={() => {
+                if (eventHandler !== null) return eventHandler(item);
+              }}
             >
               {item.name}
             </li>
