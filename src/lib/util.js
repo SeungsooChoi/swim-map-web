@@ -44,3 +44,19 @@ export const getMatchedIndex = (poolList, currentId) => {
  */
 export const getIsShowFilteredArr = swimPool =>
   swimPool.filter(item => item.isShow === true);
+
+/**
+ * 시도/레인 드롭다운에서 선택한 값 clicked 속성 변환
+ * @param {*} arr sido 혹은 lane
+ * @param {*} item 드롭다운에서 선택한 item
+ * @returns
+ */
+export const getArrayWithChangedObject = (arr, item) => {
+  let newArr = [...arr];
+  newArr.forEach(data => {
+    if (data.name === item.name) {
+      data.clicked = !item.clicked;
+    }
+  });
+  return newArr;
+};

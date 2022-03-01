@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { commonStyle } from '../../styles';
 
@@ -64,23 +64,36 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Dropdown = ({ text, children }) => {
-  const dropdownRef = useRef(null);
-  const [isActive, setIsActive] = useState(false);
-  const onClick = () => setIsActive(!isActive);
-
+const Dropdown = ({
+  title,
+  contents,
+  isActive,
+  dropdownRef,
+  onClick,
+  handleClickDropdownItem,
+}) => {
   return (
     <Container>
       <Button onClick={onClick}>
         <span>
-          {text} {isActive ? <span>&uarr;</span> : <span>&darr;</span>}
+          {title} {isActive ? <span>&uarr;</span> : <span>&darr;</span>}
         </span>
       </Button>
       <nav
         className={`menu ${isActive ? 'active' : 'inactive'}`}
         ref={dropdownRef}
       >
-        {children}
+        <ul>
+          {contents.map((item, i) => (
+            <li
+              key={i}
+              className={`${item.clicked ? 'clicked' : 'notclicked'}`}
+              onClick={() => handleClickDropdownItem(item)}
+            >
+              {item.name}
+            </li>
+          ))}
+        </ul>
       </nav>
     </Container>
   );

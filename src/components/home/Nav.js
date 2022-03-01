@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Dropdown from '../common/Dropdown';
 
 const NavBlock = styled.div`
   display: flex;
@@ -29,39 +28,13 @@ const SelectedItem = styled.ul`
 const Nav = ({
   sido,
   lane,
-  onClickSidoDropdown,
-  onClickLaneDropdown,
+  renderChecks,
   onClickRemoveSidoFilter,
   onClickRemoveLaneFilter,
 }) => {
   return (
     <NavBlock>
-      <Dropdown text="시/도명">
-        <ul>
-          {sido.map((item, i) => (
-            <li
-              key={i}
-              className={`${item.clicked ? 'clicked' : 'notclicked'}`}
-              onClick={() => onClickSidoDropdown(item)}
-            >
-              {item.name}
-            </li>
-          ))}
-        </ul>
-      </Dropdown>
-      <Dropdown text="레인">
-        <ul>
-          {lane.map((item, i) => (
-            <li
-              key={i}
-              className={`${item.clicked ? 'clicked' : 'notclicked'}`}
-              onClick={() => onClickLaneDropdown(item)}
-            >
-              {item.name}(m)
-            </li>
-          ))}
-        </ul>
-      </Dropdown>
+      {renderChecks()}
       <SelectedItem>
         {/* 시/도 */}
         {sido.map((item, i) =>
