@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Logo from '../../components/common/Logo';
 import RegisterBlock from '../../components/register/RegisterBlock';
 import AuthLayout from '../../components/user/AuthLayout';
+import useChecks from '../../hooks/useChecks';
 import useInputs from '../../hooks/useInputs';
 import useUser from '../../hooks/useUser';
 
@@ -25,6 +26,9 @@ const REGISTER_MUTATION = gql`
   }
 `;
 
+// 수영장 레인 종류
+const labels = ['50m', '25m', '기타'];
+
 const RegisterContainer = () => {
   const { data } = useUser();
   const [{ name, detailAddress }, onChange, reset] = useInputs({
@@ -32,7 +36,7 @@ const RegisterContainer = () => {
     detailAddress: '',
   });
   const [address, setAddress] = useState('');
-  const [checkedList, setCheckedLists] = useState([]);
+  const [renderChecks, getCheckList] = useChecks(labels);
 
   const onCompleted = data => {
     console.log(data);
@@ -58,18 +62,22 @@ const RegisterContainer = () => {
   // 나머지 항목은 관리자가 등록시 채워넣는 방식이 될 수 밖에 없다고 생각함
   const onSubmit = e => {
     e.preventDefault();
+    const checkedList = getCheckList()
+      .map((item, i) => item && labels[i])
+      .filter(item => item !== false)
+      .join();
     console.log(name, address, detailAddress, checkedList);
-    console.log(loading);
-    if (loading) {
-      return;
-    }
-    const laneStr = checkedList.map(li => li.data).join();
-    const totalAddress = address + detailAddress;
-    const username = data.seeProfile.username;
+    // console.log(loading);
+    // if (loading) {
+    //   return;
+    // }
+    // const laneStr = getCheckList.map(li => li.data).join();
+    // const totalAddress = address + detailAddress;
+    // const username = data.seeProfile.username;
 
-    createSwimPool({
-      variables: { name, laneStr, totalAddress, username },
-    });
+    // createSwimPool({
+    //   variables: { name, laneStr, totalAddress, username },
+    // });
   };
 
   return (
@@ -82,8 +90,8 @@ const RegisterContainer = () => {
         detailAddress={detailAddress}
         onChange={onChange}
         onSubmit={onSubmit}
-        checkedList={checkedList}
-        setCheckedLists={setCheckedLists}
+        renderChecks={renderChecks}
+        labels={labels}
       />
     </AuthLayout>
   );

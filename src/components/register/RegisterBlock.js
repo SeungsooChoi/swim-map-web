@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import routes from '../../routes';
 import { commonStyle } from '../../styles';
 import Input from '../common/Input';
-import Checkbox from '../Checkbox';
 import BottomBox from '../user/BottomBox';
 import Button from '../user/Button';
 import Form from '../common/Form';
@@ -59,14 +58,8 @@ const RegisterBlock = ({
   detailAddress,
   onChange,
   onSubmit,
-  checkedList,
-  setCheckedLists,
+  renderChecks,
 }) => {
-  const laneDataList = [
-    { id: 1, data: '25m' },
-    { id: 2, data: '50m' },
-    { id: 3, data: '기타' },
-  ];
   const { daum } = window;
 
   const handleAddressClick = () => {
@@ -115,12 +108,7 @@ const RegisterBlock = ({
           value={detailAddress}
           placeholder="상세정보를 입력하세요. (예: 동, 층, 호)"
         />
-        <Checkbox
-          dataList={laneDataList}
-          checkedList={checkedList}
-          setCheckedLists={setCheckedLists}
-          required
-        />
+        {renderChecks()}
         <Button type="submit">등록</Button>
       </Form>
       <BottomBox cta="" link={routes.home} linkText="처음 화면으로" />
