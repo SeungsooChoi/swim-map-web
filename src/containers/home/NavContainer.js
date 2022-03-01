@@ -10,7 +10,7 @@ const NavContainer = () => {
   const { lane } = useSelector(state => ({ lane: state.filter.lane }));
   const dispatch = useDispatch();
 
-  // 시/도명, 레인 드롭다운내의 아이템 클릭이벤트
+  // 시/도명, 레인 드롭다운 클릭 및 클릭한 내용 제거 이벤트
   const handleClickDropdownItem = item => {
     if (sido.includes(item)) {
       dispatch(setSido(getArrayWithChangedObject(sido, item)));
@@ -18,14 +18,6 @@ const NavContainer = () => {
       dispatch(setLane(getArrayWithChangedObject(lane, item)));
     }
   };
-
-  // 클릭한 시/도명 제거 클릭이벤트
-  const onClickRemoveSidoFilter = item =>
-    dispatch(setSido(getArrayWithChangedObject(sido, item)));
-
-  // 클릭한 레인 제거 클릭이벤트
-  const onClickRemoveLaneFilter = item =>
-    dispatch(setLane(getArrayWithChangedObject(lane, item)));
 
   // useDropdown
   const [renderChecks] = useDropdown(
@@ -41,8 +33,7 @@ const NavContainer = () => {
       sido={sido}
       lane={lane}
       renderChecks={renderChecks}
-      onClickRemoveSidoFilter={onClickRemoveSidoFilter}
-      onClickRemoveLaneFilter={onClickRemoveLaneFilter}
+      handleClickDropdownItem={handleClickDropdownItem}
     />
   );
 };

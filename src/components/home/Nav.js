@@ -25,13 +25,7 @@ const SelectedItem = styled.ul`
   }
 `;
 
-const Nav = ({
-  sido,
-  lane,
-  renderChecks,
-  onClickRemoveSidoFilter,
-  onClickRemoveLaneFilter,
-}) => {
+const Nav = ({ sido, lane, renderChecks, handleClickDropdownItem }) => {
   return (
     <NavBlock>
       {renderChecks()}
@@ -39,7 +33,7 @@ const Nav = ({
         {/* 시/도 */}
         {sido.map((item, i) =>
           item.clicked ? (
-            <li key={i} onClick={() => onClickRemoveSidoFilter(item)}>
+            <li key={i} onClick={() => handleClickDropdownItem(item)}>
               {item.name} <span>X</span>
             </li>
           ) : null,
@@ -47,7 +41,7 @@ const Nav = ({
         {/* 레인 */}
         {lane.map((item, i) =>
           item.clicked ? (
-            <li key={i} onClick={() => onClickRemoveLaneFilter(item)}>
+            <li key={i} onClick={() => handleClickDropdownItem(item)}>
               {item.name} <span>X</span>
             </li>
           ) : null,
