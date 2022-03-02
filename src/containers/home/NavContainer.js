@@ -23,7 +23,7 @@ const NavContainer = () => {
   const [renderChecks] = useDropdown(
     [
       { title: '시/도명', contents: sido },
-      { title: '레인', contents: lane },
+      { title: '레인 (m)', contents: lane },
     ],
     handleClickDropdownItem,
   );

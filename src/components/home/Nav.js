@@ -22,6 +22,11 @@ const SelectedItem = styled.ul`
     border-radius: 2rem;
     margin-right: 1rem;
     cursor: pointer;
+    font-weight: 700;
+
+    span {
+      font-weight: 400;
+    }
   }
 `;
 
