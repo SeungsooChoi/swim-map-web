@@ -7,9 +7,9 @@ import Signup from './screens/Signup';
 import NotFound from './screens/NotFound';
 import Register from './screens/Register';
 import { GlobalStyles } from './styles';
-// import PrivateRoute from './components/PrivateRoute';
-// import Admin from './screens/Admin';
-// import Dashboard from './components/admin/Dashboard';
+import PrivateRoute from './components/PrivateRoute';
+import Admin from './screens/Admin';
+import Dashboard from './components/admin/Dashboard';
 // import List from './components/admin/List';
 // import PoolManagement from './components/admin/PoolManagement';
 // import UserManagement from './components/admin/UserManagement';
@@ -24,19 +24,19 @@ function App() {
         <Route path={routes.signUp} element={<Signup />} />
         <Route path={routes.register} element={<Register />} />
         {/* 중첩 라우팅 */}
-        {/* <Route
-            path={routes.admin}
-            element={
-              <PrivateRoute>
-                <Admin />
-              </PrivateRoute>
-            }
-          >
-            <Route path={routes.dashboard} element={<Dashboard />} />
-            <Route path={routes.list} element={<List />} />
+        <Route
+          path={routes.admin}
+          element={
+            <PrivateRoute>
+              <Admin />
+            </PrivateRoute>
+          }
+        >
+          <Route path={routes.dashboard} element={<Dashboard />} />
+          {/* <Route path={routes.list} element={<List />} />
             <Route path={routes.poolManagement} element={<PoolManagement />} />
-            <Route path={routes.userManagement} element={<UserManagement />} />
-          </Route> */}
+            <Route path={routes.userManagement} element={<UserManagement />} /> */}
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

@@ -1,4 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  font-size: 1.3rem;
+  font-weight: 300;
+
+  .date {
+    margin-bottom: 1rem;
+  }
+`;
 
 const Clock = () => {
   const [date, setDate] = useState(new Date());
@@ -12,10 +22,10 @@ const Clock = () => {
     return () => clearInterval(timer);
   }, []);
   return (
-    <div>
-      <div>{date.toLocaleDateString()}</div>
+    <Wrapper>
+      <div className="date">{date.toLocaleDateString()}</div>
       <div>{date.toLocaleTimeString()}</div>
-    </div>
+    </Wrapper>
   );
 };
 

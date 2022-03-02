@@ -1,13 +1,19 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import styled from 'styled-components';
 import Nav from '../components/admin/Nav';
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 const Admin = () => {
   return (
-    <div className="flex flex-row">
+    <Wrapper>
       <Nav />
       <Outlet />
-    </div>
+    </Wrapper>
   );
 };
 
