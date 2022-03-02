@@ -30,12 +30,13 @@ const Navigation = styled.nav`
 const MenuList = styled.ul`
   li {
     margin-top: 2rem;
-    padding: 1rem;
-    cursor: pointer;
     text-align: center;
 
     .link-menu {
       all: unset;
+      display: inline-block;
+      padding: 1rem;
+      cursor: pointer;
     }
 
     .button-logout {
