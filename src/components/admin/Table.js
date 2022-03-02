@@ -1,5 +1,45 @@
 import React from 'react';
+import styled from 'styled-components';
 import { formatDate } from '../../lib/util';
+
+const TableWrapper = styled.table`
+  min-width: 100%;
+
+  thead {
+    background: #e9ecef;
+
+    th {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-align: left;
+      text-transform: uppercase;
+      border-right: 1px solid #ced4da;
+    }
+  }
+
+  tbody {
+    tr {
+      background: white;
+      border-bottom: 1px solid #ced4da;
+
+      :hover {
+        background: #f1f3f5;
+      }
+
+      td {
+        padding: 1rem 1.5rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        font-weight: 500;
+        white-space: nowrap;
+        border-right: 1px solid #ced4da;
+      }
+    }
+  }
+`;
 
 const Table = ({ swimpool, isShow }) => {
   const getIsShow = item => {
@@ -12,17 +52,13 @@ const Table = ({ swimpool, isShow }) => {
   };
 
   return (
-    <table className="min-w-full">
-      <thead className="bg-gray-400/40">
+    <TableWrapper>
+      <thead>
         <tr>
           {Object.keys(swimpool[0])
             .filter(item => getIsShow(item))
             .map((item, i) => (
-              <th
-                key={i}
-                scope="col"
-                className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase border-r border-solid border-r-slate-400/50"
-              >
+              <th key={i} scope="col">
                 {item}
               </th>
             ))}
@@ -32,94 +68,38 @@ const Table = ({ swimpool, isShow }) => {
         {swimpool
           .filter(item => item.isShow === isShow)
           .map((item, i) => (
-            <tr
-              key={i}
-              className="bg-white hover:bg-gray-100 border-b border-solid border-b-slate-400/50"
-            >
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.id}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.sigunguName}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.name}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.inOutDoorDivName}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.manageMainName}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.contactNo}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.homepageAddr}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.divingLength}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.divingWidth}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.divingDepth}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.regPoolLength}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.regPoolWidth}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.regPoolLaneCnt}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.irregPoolLength}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.irregPoolWidth}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.irregPoolLaneCnt}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.seatCnt}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.personCnt}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.latitude}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.longitude}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.lotNoAddr}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.roadNmAddr}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.remarks}
-              </td>
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {item.registeredUser}
-              </td>
-              {!isShow && (
-                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                  {String(item.isShow)}
-                </td>
-              )}
-              <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-r border-solid border-r-slate-400/50">
-                {formatDate(Number(item.updatedAt))}
-              </td>
+            <tr key={i}>
+              <td>{item.id}</td>
+              <td>{item.sigunguName}</td>
+              <td>{item.sigunguCode}</td>
+              <td>{item.name}</td>
+              <td>{item.inOutDoorDivName}</td>
+              <td>{item.manageMainName}</td>
+              <td>{item.contactNo}</td>
+              <td>{item.homepageAddr}</td>
+              <td>{item.divingLength}</td>
+              <td>{item.divingWidth}</td>
+              <td>{item.divingDepth}</td>
+              <td>{item.regPoolLength}</td>
+              <td>{item.regPoolWidth}</td>
+              <td>{item.regPoolLaneCnt}</td>
+              <td>{item.irregPoolLength}</td>
+              <td>{item.irregPoolWidth}</td>
+              <td>{item.irregPoolLaneCnt}</td>
+              <td>{item.seatCnt}</td>
+              <td>{item.personCnt}</td>
+              <td>{item.latitude}</td>
+              <td>{item.longitude}</td>
+              <td>{item.lotNoAddr}</td>
+              <td>{item.roadNmAddr}</td>
+              <td>{item.remarks}</td>
+              <td>{item.registeredUser}</td>
+              {!isShow && <td>{String(item.isShow)}</td>}
+              <td>{formatDate(Number(item.updatedAt))}</td>
             </tr>
           ))}
       </tbody>
-    </table>
+    </TableWrapper>
   );
 };
 
