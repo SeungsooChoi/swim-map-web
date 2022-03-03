@@ -42,6 +42,8 @@ const MenuList = styled.ul`
     .button-logout {
       all: unset;
       text-decoration-line: underline;
+      padding: 1rem;
+      cursor: pointer;
     }
   }
 `;
