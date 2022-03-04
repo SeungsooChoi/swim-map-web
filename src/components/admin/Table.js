@@ -15,7 +15,7 @@ const TableWrapper = styled.table`
       font-weight: 500;
       letter-spacing: 0.05em;
       text-align: left;
-      text-transform: uppercase;
+      /* text-transform: uppercase; */
       border-right: 1px solid #ced4da;
     }
   }
