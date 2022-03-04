@@ -12,7 +12,7 @@ const GET_PROFILE = gql`
   }
 `;
 
-const useUser = () => {
+const useLoggedInUser = () => {
   const hasToken = useReactiveVar(isLoggedUser);
   const { data } = useQuery(GET_PROFILE, { skip: !hasToken });
 
@@ -25,4 +25,4 @@ const useUser = () => {
   return { data };
 };
 
-export default useUser;
+export default useLoggedInUser;

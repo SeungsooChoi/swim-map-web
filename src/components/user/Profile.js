@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { userLogOut } from '../../apollo';
-import useUser from '../../hooks/useUser';
+import useLoggedInUser from '../../hooks/useLoggedInUser';
 import routes from '../../routes';
 
 const Wrapper = styled.div`
@@ -34,7 +34,7 @@ const SLink = styled(Link)`
 `;
 
 const Profile = () => {
-  const { data } = useUser();
+  const { data } = useLoggedInUser();
 
   const onClick = () => {
     userLogOut();

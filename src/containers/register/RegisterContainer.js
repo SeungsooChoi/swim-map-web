@@ -5,7 +5,7 @@ import RegisterBlock from '../../components/register/RegisterBlock';
 import AuthLayout from '../../components/user/AuthLayout';
 import useChecks from '../../hooks/useChecks';
 import useInputs from '../../hooks/useInputs';
-import useUser from '../../hooks/useUser';
+import useLoggedInUser from '../../hooks/useLoggedInUser';
 
 const REGISTER_MUTATION = gql`
   mutation createSwimPool(
@@ -31,7 +31,7 @@ const checksTitle = '수영장 레인 종류';
 const labels = ['50m', '25m', '기타'];
 
 const RegisterContainer = () => {
-  const { data } = useUser();
+  const { data } = useLoggedInUser();
   const [{ name, detailAddress }, onChange, reset] = useInputs({
     name: '',
     detailAddress: '',
